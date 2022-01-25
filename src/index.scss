@@ -1,0 +1,170 @@
+@import "./variables.scss";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $font-color;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+button {
+  cursor: pointer;
+  font-size: $button-font-size;
+  padding: $button-padding;
+  text-transform: uppercase;
+  font-weight: 700;
+  height: $button-height;
+  color: $font-color;
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border-radius: $button-radius;
+  background: $color-light-gradient;
+  border: $button-border-width solid $font-color;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: background-position 80ms linear;
+  background-size: 350px;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    transition: background-position 80ms linear;
+    background-position: -80px;
+  }
+
+  &.sm {
+    font-size: $button-font-size - 2px;
+    height: $button-height - 4px;
+    padding: (nth($button-padding, 1)) (nth($button-padding, 2) - 10px);
+  }
+
+  &.dark {
+    color: $font-color-light;
+    background: $color-dark-gradient;
+    background-size: 300px;
+
+    &:hover {
+      transition: background-position 80ms linear;
+      background-position: -80px;
+    }
+  }
+
+  &.action {
+    color: $font-color-light;
+    background: $color-action-gradient;
+    background-size: 300px;
+
+    &:hover {
+      transition: background-position 80ms linear;
+      background-position: -80px;
+    }
+  }
+
+  &.warn {
+    color: $font-color-light;
+    background: $color-warn-gradient;
+    background-size: 300px;
+
+    &:hover {
+      transition: background-position 80ms linear;
+      background-position: -80px;
+    }
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.leaflet-container {
+  height: 100%;
+}
+
+.app-header {
+  padding-left: $content-horizontal-padding;
+  padding-right: $content-horizontal-padding;
+}
+
+.app-body {
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.app-logo {
+  font-size: $logo-font-size;
+}
+
+input[type="text"],
+input[type="number"] {
+  font-family: $font-family;
+  width: 80%;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 5px;
+  background: #eeeeee;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.leaflet-container {
+  font-family: $font-family;
+}
+
+@media only screen and (max-width: 600px) {
+  .app-header {
+    padding-left: $content-horizontal-padding / 2;
+    padding-right: $content-horizontal-padding / 2;
+  }
+
+  button {
+    font-size: $button-font-size - 2px;
+  }
+
+  .app-logo {
+    font-size: $logo-font-size - 10px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .app-header {
+    padding-left: $content-horizontal-padding / 4;
+    padding-right: $content-horizontal-padding / 4;
+  }
+
+  button {
+    font-size: $button-font-size - 4px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  button {
+    font-size: $button-font-size - 6px;
+  }
+
+  .app-logo {
+    font-size: $logo-font-size - 20px;
+  }
+}
+
+#root {
+  height: 100%;
+}

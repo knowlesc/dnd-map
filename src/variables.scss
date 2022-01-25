@@ -1,0 +1,49 @@
+$font-color: #111;
+$font-color-light: #eee;
+$font-family: "Mukta", sans-serif;
+$background-color: #fff;
+
+$header-height: 80px;
+$header-background-color: #111;
+$header-spacing: 40px;
+
+$logo-color: #eee;
+$logo-font-size: 36px;
+
+$content-vertical-padding: 50px;
+$content-horizontal-padding: 100px;
+$content-max-width: 800px;
+
+$color-warn-gradient: linear-gradient(
+  120deg,
+  rgba(219, 116, 116, 1) 0%,
+  rgba(219, 116, 116, 1) 28%,
+  rgba(230, 12, 12, 1) 100%
+);
+
+$color-dark-gradient: linear-gradient(
+  120deg,
+  rgba(79, 79, 79, 1) 0%,
+  rgba(65, 65, 65, 1) 28%,
+  rgba(51, 50, 50, 1) 100%
+);
+
+$color-light-gradient: linear-gradient(
+  120deg,
+  rgba(255, 255, 255, 1) 0%,
+  rgba(228, 228, 228, 1) 28%,
+  rgba(182, 182, 182, 1) 100%
+);
+
+$color-action-gradient: linear-gradient(
+  120deg,
+  rgba(116, 134, 219, 1) 0%,
+  rgba(116, 120, 219, 1) 28%,
+  rgba(15, 12, 230, 1) 100%
+);
+
+$button-height: 48px;
+$button-border-width: 0;
+$button-font-size: 18px;
+$button-padding: 10px 22px;
+$button-radius: 24px;

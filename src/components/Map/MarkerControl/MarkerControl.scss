@@ -1,0 +1,8 @@
+.marker-control {
+  display: flex;
+  flex-flow: column nowrap;
+
+  :not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
