@@ -32,11 +32,12 @@ export const MapMarker: React.FC<{ marker: IMarker }> = ({ marker }) => {
         iconSize: [32, 32],
         iconAnchor: [16, 32],
         popupAnchor: [0, -32],
+        className: "map-marker",
         html: renderToString(
           <>
             <i
               style={{ color: marker.color }}
-              className={`fas fa-${marker.icon} map-marker`}
+              className={`fas fa-${marker.icon} map-marker-icon`}
             />
             {marker.dmOnly && (
               <i className={`fas fa-lock map-marker-private`} />

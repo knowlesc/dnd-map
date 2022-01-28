@@ -9,12 +9,12 @@ import { mapConfig } from "../../config/mapConfig";
 export const AppLogo: React.FC = () => {
   const [opened, setOpened] = useState(false);
   const { displayName } = useContext(MapContext);
-  const { user } = useContext(SignInContext);
+  const { googleAccount } = useContext(SignInContext);
 
   return (
     <>
       <div className="app-logo">
-        {user && (
+        {googleAccount && (
           <>
             <div
               className="app-logo-selector"

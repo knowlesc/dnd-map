@@ -13,7 +13,7 @@ import { authConfig } from "../config/authConfig";
 interface SignInContextValue {
   signIn: () => void;
   signOut: () => void;
-  user: FirebaseUser | null;
+  googleAccount: FirebaseUser | null; // TODO at some point we should only render if there is a user, and guarantee this type
 }
 
 export const SignInContext = createContext<SignInContextValue>(
@@ -21,7 +21,7 @@ export const SignInContext = createContext<SignInContextValue>(
 );
 
 export const SignInProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState<FirebaseUser | null>(null);
+  const [googleAccount, setGoogleAccount] = useState<FirebaseUser | null>(null);
   const [app, setApp] = useState<FirebaseApp | null>(null);
 
   useEffect(() => {
@@ -29,8 +29,8 @@ export const SignInProvider: React.FC = ({ children }) => {
     setApp(app);
 
     const auth = getAuth(app);
-    onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    onAuthStateChanged(auth, (googleAccount) => {
+      setGoogleAccount(googleAccount);
     });
   }, []);
 
@@ -53,7 +53,7 @@ export const SignInProvider: React.FC = ({ children }) => {
       value={{
         signIn,
         signOut,
-        user,
+        googleAccount,
       }}
     >
       {children}

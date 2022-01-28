@@ -4,6 +4,9 @@ import MapMarker from "../MapMarker/MapMarker";
 import { MarkerContext } from "../../../contexts/MarkerContext";
 import MapCircle from "../MapCircle/MapCircle";
 import { MapContext } from "../../../contexts/MapContext";
+import { PositionProvider } from "../../../contexts/PositionContext";
+import MouseTracker from "../MouseTracker/MouseTracker";
+import MousePositions from "../MousePositions/MousePositions";
 
 export const MapInner: React.FC = () => {
   const { markers } = React.useContext(MarkerContext);
@@ -25,6 +28,11 @@ export const MapInner: React.FC = () => {
             <MapMarker key={marker.id} marker={marker} />
           );
         })}
+
+        <PositionProvider>
+          <MouseTracker />
+          <MousePositions />
+        </PositionProvider>
       </ImageOverlay>
     </>
   );

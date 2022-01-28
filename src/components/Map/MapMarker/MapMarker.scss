@@ -1,24 +1,26 @@
 @import "../../../variables.scss";
 
-.leaflet-div-icon {
+.map-marker {
   background: none;
   border: none;
   text-align: center;
 
-  .map-marker {
+  .map-marker-icon {
     font-size: 32px;
     filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
 
     path {
       stroke: #eeeeee;
-      stroke-width: 30px;
+      stroke-width: 35px;
     }
   }
 
   .map-marker-name {
     font-size: 1.1em;
-    text-shadow: 0 0 4px #ffffff, 0 0 4px #ffffff, 0 0 4px #ffffff,
-      0 0 4px #ffffff, 0 0 4px #ffffff, 0 0 4px #ffffff, 2px 2px 8px #000000;
+    text-shadow: 0 0 3px #ffffff, 0 0 3px #ffffff, 0 0 3px #ffffff,
+      0 0 3px #ffffff, 0 0 3px #ffffff, 0 0 3px #ffffff, 0 0 3px #ffffff,
+      0 0 3px #ffffff, 0 0 3px #ffffff, 0 0 3px #ffffff, 0 0 3px #ffffff,
+      2px 2px 8px #000000;
     text-align: center;
     font-weight: 700;
     width: 100px;

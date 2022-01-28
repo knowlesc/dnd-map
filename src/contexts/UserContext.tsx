@@ -6,14 +6,15 @@ import { getDatabase, ref, get, child } from "firebase/database";
 interface UserContextValue {
   canViewMarkers: boolean;
   canEditMarkers: boolean;
-  email: string;
+  user: IUser;
   loading: boolean;
 }
 
 interface IUser {
-  uid: string;
   role: string;
   name: string;
+  uid: string;
+  email: string | null;
 }
 
 export const UserContext = createContext<UserContextValue>(
@@ -21,25 +22,27 @@ export const UserContext = createContext<UserContextValue>(
 );
 
 export const UserProvider: React.FC = ({ children }) => {
-  const { user } = useContext(SignInContext);
-  const [role, setRole] = useState<string | null>(null);
-  const [email, setEmail] = useState<string | null>(null);
+  const { googleAccount } = useContext(SignInContext);
+  const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(false);
   const [loadError, setLoadError] = useState<Error | null>(null);
 
   useEffect(() => {
-    setRole(null);
-    setEmail(user?.email ?? null);
+    setUser(null);
     setLoadError(null);
 
-    if (!user) return;
+    if (!googleAccount) return;
 
     setLoading(true);
 
-    get(child(ref(getDatabase()), "/users/" + user.uid))
+    get(child(ref(getDatabase()), "/users/" + googleAccount.uid))
       .then((snapshot) => {
-        const result = snapshot.val() as IUser;
-        setRole(result?.role);
+        const result = snapshot.val() as { name: string; role: string };
+        setUser({
+          ...result,
+          email: googleAccount.email,
+          uid: googleAccount.uid,
+        });
         setLoading(false);
       })
       .catch((e) => {
@@ -47,30 +50,30 @@ export const UserProvider: React.FC = ({ children }) => {
         setLoadError(e);
         console.error(e);
       });
-  }, [user, setLoadError, setLoading, setEmail, setRole]);
+  }, [googleAccount, setLoadError, setLoading, setUser]);
 
   if (loading) {
     return <AppError error="Loading" />;
   }
 
-  if (!user) {
+  if (!googleAccount) {
     return <AppError error="Not signed in" />;
   }
 
-  if (loadError || !email) {
+  if (loadError) {
     return <AppError error="Error signing in" />;
   }
 
-  if (!role || !["player", "dm"].includes(role)) {
+  if (!user?.role || !["player", "dm"].includes(user.role)) {
     return <AppError error="You are not allowed to be here" />;
   }
 
-  const canViewMarkers = ["player", "dm"].includes(role);
-  const canEditMarkers = role === "dm";
+  const canViewMarkers = ["player", "dm"].includes(user.role);
+  const canEditMarkers = user.role === "dm";
 
   return (
     <UserContext.Provider
-      value={{ canViewMarkers, canEditMarkers, loading, email }}
+      value={{ canViewMarkers, canEditMarkers, loading, user }}
     >
       {children}
     </UserContext.Provider>

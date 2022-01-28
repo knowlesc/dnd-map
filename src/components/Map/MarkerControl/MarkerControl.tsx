@@ -10,7 +10,9 @@ import { Colors } from "../../../constants/Colors";
 export const MarkerControl: React.FC = () => {
   const map = useMap();
   const { addMarker } = React.useContext(MarkerContext);
-  const { email } = React.useContext(UserContext);
+  const {
+    user: { name },
+  } = React.useContext(UserContext);
 
   return (
     <div className="leaflet-bottom leaflet-right">
@@ -21,7 +23,7 @@ export const MarkerControl: React.FC = () => {
             onClick={() => {
               const center = map.getCenter();
               const marker: IMarker = {
-                creator: email,
+                creator: name,
                 id: uuid.v4(),
                 lat: center.lat,
                 lng: center.lng,
@@ -43,7 +45,7 @@ export const MarkerControl: React.FC = () => {
             onClick={() => {
               const center = map.getCenter();
               const marker: IMarker = {
-                creator: email,
+                creator: name,
                 id: uuid.v4(),
                 lat: center.lat,
                 lng: center.lng,
