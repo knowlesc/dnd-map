@@ -1,3 +1,5 @@
+@import "../../../variables.scss";
+
 .zooming {
   .map-marker.map-cursor {
     transition: none;
@@ -12,7 +14,7 @@
     filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
 
     path {
-      stroke: #eeeeee;
+      stroke: $marker-highlight-color;
       stroke-width: 60px;
     }
   }
