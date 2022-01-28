@@ -26,6 +26,7 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
   const [color, setColor] = React.useState(marker.color);
   const [icon, setIcon] = React.useState(marker.icon);
   const [name, setName] = React.useState(marker.name);
+  const [notes, setNotes] = React.useState(marker.notes);
   const [dmOnly, setDmOnly] = React.useState(marker.dmOnly);
   const [lat, setLat] = React.useState(marker.lat);
   const [lng, setLng] = React.useState(marker.lng);
@@ -72,113 +73,140 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
   const save = React.useCallback(() => {
     if (marker.type === "circle") {
       // bug: passing lat/lng/radius to a non-circle will overwrite any dragging
-      setMarker({ ...marker, color, icon, name, dmOnly, lat, lng, radius });
+      setMarker({
+        ...marker,
+        color,
+        icon,
+        name,
+        dmOnly,
+        notes,
+        lat,
+        lng,
+        radius,
+      });
     } else {
-      setMarker({ ...marker, color, icon, name, dmOnly });
+      setMarker({ ...marker, color, icon, name, dmOnly, notes });
     }
-  }, [setMarker, marker, color, icon, name, dmOnly, lat, lng, radius]);
+  }, [setMarker, marker, color, icon, name, dmOnly, lat, lng, radius, notes]);
 
   return (
-    <Popup className="marker-popup">
-      <div className="marker-popup-header">
+    <Popup className="marker-popup" minWidth={150}>
+      <div className="marker-popup-body">
+        <div className="marker-popup-readonly">
+          <strong>{!canEditMarkers && marker.name}</strong>
+          {!canEditMarkers && (
+            <div className="marker-notes">{marker.notes}</div>
+          )}
+        </div>
+
         {canEditMarkers && (
-          <input
-            type="text"
-            defaultValue={marker.name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        )}
-        {!canEditMarkers && marker.name}
-      </div>
-      <div className="marker-creator">Created by {marker.creator}</div>
-      {canEditMarkers && (
-        <>
-          <div className="marker-popup-body">
-            {marker.type !== "circle" && (
+          <>
+            <div className="marker-select-container">
+              {marker.type !== "circle" && (
+                <div className="marker-select">
+                  <FontAwesomeIcon
+                    className="arrow"
+                    icon="chevron-left"
+                    onClick={() => updateIcon(-1)}
+                  />
+                  <FontAwesomeIcon className="switch" icon={icon as IconProp} />
+                  <FontAwesomeIcon
+                    className="arrow"
+                    icon="chevron-right"
+                    onClick={() => updateIcon(1)}
+                  />
+                </div>
+              )}
               <div className="marker-select">
                 <FontAwesomeIcon
                   className="arrow"
                   icon="chevron-left"
-                  onClick={() => updateIcon(-1)}
+                  onClick={() => updateColor(-1)}
                 />
-                <FontAwesomeIcon className="switch" icon={icon as IconProp} />
+                <FontAwesomeIcon
+                  className="switch"
+                  icon="square"
+                  color={color}
+                />
                 <FontAwesomeIcon
                   className="arrow"
                   icon="chevron-right"
-                  onClick={() => updateIcon(1)}
+                  onClick={() => updateColor(1)}
                 />
+              </div>
+            </div>
+
+            <input
+              type="text"
+              defaultValue={marker.name}
+              onChange={(e) => setName(e.target.value)}
+            />
+
+            {marker.type === "circle" && (
+              <div className="marker-popup-coords">
+                <div>
+                  X:
+                  <br />
+                  <input
+                    type="number"
+                    defaultValue={marker.lng}
+                    onChange={(e) => updateLng(e.target.valueAsNumber)}
+                  />
+                </div>
+
+                <div>
+                  Y:
+                  <br />
+                  <input
+                    type="number"
+                    defaultValue={marker.lat}
+                    onChange={(e) => updateLat(e.target.valueAsNumber)}
+                  />
+                </div>
+
+                <div>
+                  Radius:
+                  <br />
+                  <input
+                    type="number"
+                    defaultValue={marker.radius}
+                    onChange={(e) => updateRadius(e.target.valueAsNumber)}
+                  />
+                </div>
               </div>
             )}
-            <div className="marker-select">
-              <FontAwesomeIcon
-                className="arrow"
-                icon="chevron-left"
-                onClick={() => updateColor(-1)}
-              />
-              <FontAwesomeIcon className="switch" icon="square" color={color} />
-              <FontAwesomeIcon
-                className="arrow"
-                icon="chevron-right"
-                onClick={() => updateColor(1)}
-              />
+
+            <div className="marker-notes">
+              <textarea
+                placeholder="Notes"
+                defaultValue={marker.notes}
+                onChange={(e) => setNotes(e.target.value)}
+              ></textarea>
             </div>
-          </div>
 
-          {marker.type === "circle" && (
-            <div className="marker-popup-coords">
-              <div>
-                X:
-                <br />
+            <div className="marker-checkbox">
+              <label>
                 <input
-                  type="number"
-                  defaultValue={marker.lng}
-                  onChange={(e) => updateLng(e.target.valueAsNumber)}
+                  name="dmOnly"
+                  type="checkbox"
+                  defaultChecked={marker.dmOnly}
+                  onChange={(e) => setDmOnly(e.target.checked)}
                 />
-              </div>
-
-              <div>
-                Y:
-                <br />
-                <input
-                  type="number"
-                  defaultValue={marker.lat}
-                  onChange={(e) => updateLat(e.target.valueAsNumber)}
-                />
-              </div>
-
-              <div>
-                Radius:
-                <br />
-                <input
-                  type="number"
-                  defaultValue={marker.radius}
-                  onChange={(e) => updateRadius(e.target.valueAsNumber)}
-                />
-              </div>
+                Visible to DM only
+              </label>
             </div>
-          )}
 
-          <div className="marker-checkbox">
-            <label>
-              <input
-                name="dmOnly"
-                type="checkbox"
-                defaultChecked={marker.dmOnly}
-                onChange={(e) => setDmOnly(e.target.checked)}
-              />
-              Visible to DM only
-            </label>
-          </div>
-          <div className="marker-buttons">
-            <button className="action sm" onClick={save}>
-              save
-            </button>
-            <button className="warn sm" onClick={() => removeMarker(marker)}>
-              delete
-            </button>
-          </div>
-        </>
-      )}
+            <div className="marker-buttons">
+              <button className="action sm" onClick={save}>
+                save
+              </button>
+              <button className="warn sm" onClick={() => removeMarker(marker)}>
+                delete
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </Popup>
   );
 };

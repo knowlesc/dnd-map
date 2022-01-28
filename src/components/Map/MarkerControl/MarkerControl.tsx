@@ -33,6 +33,7 @@ export const MarkerControl: React.FC = () => {
                 dmOnly: true,
                 type: "marker",
                 radius: 0,
+                notes: "",
               };
               addMarker(marker);
             }}
@@ -55,6 +56,7 @@ export const MarkerControl: React.FC = () => {
                 dmOnly: true,
                 type: "circle",
                 radius: 100,
+                notes: "",
               };
               addMarker(marker);
             }}

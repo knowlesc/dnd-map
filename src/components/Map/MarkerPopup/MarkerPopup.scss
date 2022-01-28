@@ -1,57 +1,76 @@
 @import "../../../variables.scss";
 
 .marker-popup {
+  input[type="text"] {
+    width: 100%;
+  }
+
+  .marker-popup-readonly {
+    font-size: 14px;
+  }
+
   .leaflet-popup-close-button {
-    padding: 8px 8px 0 0 !important;
+    margin: 15px 20px 0 0 !important;
     font-size: 24px !important;
   }
 
-  .marker-popup-header {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-
   .marker-checkbox {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-top: 10px;
   }
 
-  .marker-creator {
-    margin-bottom: 20px;
+  .marker-notes {
+    margin-top: 15px;
+    white-space: pre-line;
+
+    textarea {
+      resize: none;
+    }
   }
 
   .marker-popup-body {
-    margin-bottom: 20px;
-    display: flex;
+    margin-top: 19px;
+    margin-bottom: 15px;
 
-    .marker-select {
+    .marker-select-container {
+      margin-top: -3px;
+      margin-bottom: 15px;
+      padding-right: 30px;
       display: flex;
-      justify-content: space-around;
-      flex: 1;
-      font-size: 24px;
 
-      .arrow {
-        cursor: pointer;
-        opacity: 0.7;
+      .marker-select {
+        display: flex;
+        justify-content: space-around;
+        flex: 1;
+        font-size: 24px;
 
-        &:hover {
-          opacity: 1;
+        .arrow {
+          cursor: pointer;
+          opacity: 0.7;
+
+          &:hover {
+            opacity: 1;
+          }
         }
-      }
 
-      .switch {
-        flex: 0 0 32px;
-        text-align: center;
+        .switch {
+          flex: 0 0 32px;
+          text-align: center;
+        }
       }
     }
   }
 
   .marker-popup-coords {
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 15px;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
+
+    div:not(:last-of-type) {
+      padding-right: 5px;
+    }
 
     input {
       width: 100%;
@@ -62,7 +81,6 @@
     white-space: nowrap;
     display: flex;
     justify-content: right;
-    border-top: 1px solid #eeeeee;
     padding-top: 20px;
     padding-bottom: 10px;
 

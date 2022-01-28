@@ -9,4 +9,5 @@ export interface IMarker {
   dmOnly: boolean;
   type: string;
   radius: number;
+  notes: string;
 }
