@@ -62,7 +62,9 @@ export const SaveProvider: React.FC = ({ children }) => {
           id,
         });
       } catch (e: any) {
-        setSaveError(e?.message ?? "Unknown error");
+        const message = e?.message ?? "Unknown error";
+        setSaveError(message);
+        console.error(message);
       } finally {
         setSaving(false);
       }
@@ -80,7 +82,9 @@ export const SaveProvider: React.FC = ({ children }) => {
           ...marker,
         });
       } catch (e: any) {
-        setSaveError(e?.message ?? "Unknown error");
+        const message = e?.message ?? "Unknown error";
+        setSaveError(message);
+        console.error(message);
       } finally {
         setSaving(false);
       }
@@ -96,7 +100,9 @@ export const SaveProvider: React.FC = ({ children }) => {
       try {
         await remove(ref(getDatabase(), `/markers/${mapName}/${marker.id}`));
       } catch (e: any) {
-        setSaveError(e?.message ?? "Unknown error");
+        const message = e?.message ?? "Unknown error";
+        setSaveError(message);
+        console.error(message);
       } finally {
         setSaving(false);
       }

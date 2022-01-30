@@ -26,68 +26,29 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
   const [color, setColor] = React.useState(marker.color);
   const [icon, setIcon] = React.useState(marker.icon);
   const [name, setName] = React.useState(marker.name);
-  const [notes, setNotes] = React.useState(marker.notes);
+  const [notes, setNotes] = React.useState(marker.notes ?? "");
   const [dmOnly, setDmOnly] = React.useState(marker.dmOnly);
-  const [lat, setLat] = React.useState(marker.lat);
-  const [lng, setLng] = React.useState(marker.lng);
   const [radius, setRadius] = React.useState(marker.radius);
-  const { sizeX, sizeY } = React.useContext(MapContext);
-
-  const updateLat = React.useCallback(
-    (value) => {
-      const max = sizeY;
-      setLat(Math.min(Math.max(value, 0), max));
-    },
-    [setLat, sizeY]
-  );
-
-  const updateLng = React.useCallback(
-    (value) => {
-      const max = sizeX;
-      setLng(Math.min(Math.max(value, 0), max));
-    },
-    [setLng, sizeX]
-  );
+  const [circle, setCircle] = React.useState(marker.circle ?? false);
 
   const updateRadius = React.useCallback(
-    (value) => {
-      setRadius(Math.min(Math.max(value, 50), 1000));
-    },
+    (value) => setRadius(Math.min(Math.max(value, 50), 1000)),
     [setRadius]
   );
 
   const updateColor = React.useCallback(
-    (add) => {
-      setColor(move(Colors, color, add));
-    },
+    (add) => setColor(move(Colors, color, add)),
     [color]
   );
 
   const updateIcon = React.useCallback(
-    (add) => {
-      setIcon(move(Icons, icon, add));
-    },
+    (add) => setIcon(move(Icons, icon, add)),
     [icon]
   );
 
   const save = React.useCallback(() => {
-    if (marker.type === "circle") {
-      // bug: passing lat/lng/radius to a non-circle will overwrite any dragging
-      setMarker({
-        ...marker,
-        color,
-        icon,
-        name,
-        dmOnly,
-        notes,
-        lat,
-        lng,
-        radius,
-      });
-    } else {
-      setMarker({ ...marker, color, icon, name, dmOnly, notes });
-    }
-  }, [setMarker, marker, color, icon, name, dmOnly, lat, lng, radius, notes]);
+    setMarker({ ...marker, color, icon, name, dmOnly, notes, radius, circle });
+  }, [setMarker, marker, color, icon, name, dmOnly, radius, notes, circle]);
 
   return (
     <Popup className="marker-popup" minWidth={150}>
@@ -102,21 +63,19 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
         {canEditMarkers && (
           <>
             <div className="marker-select-container">
-              {marker.type !== "circle" && (
-                <div className="marker-select">
-                  <FontAwesomeIcon
-                    className="arrow"
-                    icon="chevron-left"
-                    onClick={() => updateIcon(-1)}
-                  />
-                  <FontAwesomeIcon className="switch" icon={icon as IconProp} />
-                  <FontAwesomeIcon
-                    className="arrow"
-                    icon="chevron-right"
-                    onClick={() => updateIcon(1)}
-                  />
-                </div>
-              )}
+              <div className="marker-select">
+                <FontAwesomeIcon
+                  className="arrow"
+                  icon="chevron-left"
+                  onClick={() => updateIcon(-1)}
+                />
+                <FontAwesomeIcon className="switch" icon={icon as IconProp} />
+                <FontAwesomeIcon
+                  className="arrow"
+                  icon="chevron-right"
+                  onClick={() => updateIcon(1)}
+                />
+              </div>
               <div className="marker-select">
                 <FontAwesomeIcon
                   className="arrow"
@@ -142,28 +101,19 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
               onChange={(e) => setName(e.target.value)}
             />
 
-            {marker.type === "circle" && (
+            <div className="marker-checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  defaultChecked={marker.circle}
+                  onChange={(e) => setCircle(e.target.checked)}
+                />
+                Circle
+              </label>
+            </div>
+
+            {circle && (
               <div className="marker-popup-coords">
-                <div>
-                  X:
-                  <br />
-                  <input
-                    type="number"
-                    defaultValue={marker.lng}
-                    onChange={(e) => updateLng(e.target.valueAsNumber)}
-                  />
-                </div>
-
-                <div>
-                  Y:
-                  <br />
-                  <input
-                    type="number"
-                    defaultValue={marker.lat}
-                    onChange={(e) => updateLat(e.target.valueAsNumber)}
-                  />
-                </div>
-
                 <div>
                   Radius:
                   <br />
@@ -187,7 +137,6 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
             <div className="marker-checkbox">
               <label>
                 <input
-                  name="dmOnly"
                   type="checkbox"
                   defaultChecked={marker.dmOnly}
                   onChange={(e) => setDmOnly(e.target.checked)}

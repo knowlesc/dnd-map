@@ -7,7 +7,7 @@ export interface IMarker {
   icon: string;
   color: string;
   dmOnly: boolean;
-  type: string;
   radius: number;
   notes: string;
+  circle: boolean;
 }

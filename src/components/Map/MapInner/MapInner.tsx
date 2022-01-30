@@ -2,7 +2,6 @@ import * as React from "react";
 import { ImageOverlay } from "react-leaflet";
 import MapMarker from "../MapMarker/MapMarker";
 import { MarkerContext } from "../../../contexts/MarkerContext";
-import MapCircle from "../MapCircle/MapCircle";
 import { MapContext } from "../../../contexts/MapContext";
 import { PositionProvider } from "../../../contexts/PositionContext";
 import MouseTracker from "../MouseTracker/MouseTracker";
@@ -21,13 +20,9 @@ export const MapInner: React.FC = () => {
         ]}
         url={imageUrl}
       >
-        {markers?.map((marker) => {
-          return marker.type === "circle" ? (
-            <MapCircle key={marker.id} marker={marker} />
-          ) : (
-            <MapMarker key={marker.id} marker={marker} />
-          );
-        })}
+        {markers?.map((marker) => (
+          <MapMarker key={marker.id} marker={marker} />
+        ))}
 
         <PositionProvider>
           <MouseTracker />

@@ -31,37 +31,14 @@ export const MarkerControl: React.FC = () => {
                 color: Colors[0],
                 icon: "map-marker-alt",
                 dmOnly: true,
-                type: "marker",
                 radius: 0,
                 notes: "",
+                circle: false,
               };
               addMarker(marker);
             }}
           >
             New Marker
-          </button>
-
-          <button
-            className="add-marker"
-            onClick={() => {
-              const center = map.getCenter();
-              const marker: IMarker = {
-                creator: name,
-                id: uuid.v4(),
-                lat: center.lat,
-                lng: center.lng,
-                name: "New Marker",
-                color: Colors[0],
-                icon: "map-marker-alt",
-                dmOnly: true,
-                type: "circle",
-                radius: 100,
-                notes: "",
-              };
-              addMarker(marker);
-            }}
-          >
-            New Circle
           </button>
         </div>
       </div>

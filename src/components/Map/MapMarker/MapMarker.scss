@@ -6,6 +6,13 @@
   text-align: center;
   font-family: "Andada Pro", serif;
 
+  &:hover {
+    .map-marker-name {
+      transition: font-size 0.1s ease-out;
+      font-size: 1.25em;
+    }
+  }
+
   .map-marker-icon {
     font-size: 32px;
     filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
@@ -17,6 +24,7 @@
   }
 
   .map-marker-name {
+    transition: font-size 0.1s ease-out;
     font-size: 1.1em;
     text-shadow: 0 0 3px $marker-highlight-color,
       0 0 3px $marker-highlight-color, 0 0 3px $marker-highlight-color,
@@ -27,8 +35,8 @@
       2px 2px 8px #000000;
     text-align: center;
     font-weight: 700;
-    width: 100px;
-    margin-left: -35px;
+    width: 140px;
+    margin-left: -55px;
     display: inline-block;
   }
 
@@ -42,5 +50,15 @@
       stroke: $marker-highlight-color;
       stroke-width: 45px;
     }
+  }
+}
+
+.map-marker-circle {
+  transition: fill-opacity 0.1s ease-out;
+
+  &.hover {
+    transition: fill-opacity 0.1s ease-out;
+    fill-opacity: 0.3;
+    stroke-width: 4;
   }
 }
