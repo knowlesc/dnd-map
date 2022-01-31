@@ -15,11 +15,15 @@
 
   .map-marker-icon {
     font-size: 32px;
-    filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 0 1px $marker-highlight-color)
+      drop-shadow(0 0 1px $marker-highlight-color)
+      drop-shadow(0 0 1px $marker-highlight-color)
+      drop-shadow(0 0 2px $marker-highlight-color)
+      drop-shadow(0 0 2px $marker-highlight-color);
 
     path {
-      stroke: $marker-highlight-color;
-      stroke-width: 35px;
+      stroke: black;
+      stroke-width: 18px;
     }
   }
 
