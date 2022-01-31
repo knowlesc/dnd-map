@@ -26,7 +26,11 @@ export const AppLogo: React.FC = () => {
             <div className={"app-logo-dropdown" + (opened ? " opened" : "")}>
               <div className="app-logo-links">
                 {mapConfig.map(({ mapName, path, displayName }) => (
-                  <Link key={mapName} reloadDocument={true} to={path}>
+                  <Link
+                    key={mapName}
+                    to={path}
+                    onClick={() => setOpened(false)}
+                  >
                     <FontAwesomeIcon icon="map" /> {displayName}
                   </Link>
                 ))}

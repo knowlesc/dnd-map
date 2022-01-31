@@ -21,7 +21,7 @@ export const MouseTracker: React.FC = () => {
         map: mapName,
         time: Date.now(),
         name: user.name,
-      } as IPosition);
+      } as IPosition).catch(console.error);
     },
     [mapName, user]
   );
@@ -32,18 +32,25 @@ export const MouseTracker: React.FC = () => {
    * fly all over the place when zooming in and out.
    */
   React.useEffect(() => {
-    onValue(ref(getDatabase(), `/positions`), (snapshot) => {
-      const thirtySecondsAgo = Date.now() - 30 * 1000;
-      const allPositions = (snapshot.val() as Record<string, IPosition>) ?? {};
-      const relevantPositions = Object.entries(allPositions)
-        .filter(
-          ([uid, { map, time }]) =>
-            uid !== user.uid && map === mapName && time > thirtySecondsAgo
-        )
-        .map(([, value]) => value);
+    const cancel = onValue(
+      ref(getDatabase(), `/positions`),
+      (snapshot) => {
+        const thirtySecondsAgo = Date.now() - 30 * 1000;
+        const allPositions =
+          (snapshot.val() as Record<string, IPosition>) ?? {};
+        const relevantPositions = Object.entries(allPositions)
+          .filter(
+            ([uid, { map, time }]) =>
+              uid !== user.uid && map === mapName && time > thirtySecondsAgo
+          )
+          .map(([, value]) => value);
 
-      setPositions(relevantPositions);
-    });
+        setPositions(relevantPositions);
+      },
+      console.error
+    );
+
+    return () => cancel();
   }, [setPositions, user.uid, mapName]);
 
   useThrottleFn(

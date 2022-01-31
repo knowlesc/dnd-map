@@ -6,12 +6,13 @@ import MapCursor from "../MapCursor/MapCursor";
 const CursorMemo = React.memo(
   ({ p }: { p: IPosition }) => <MapCursor p={p} />,
   ({ p: prev }, { p: next }) => {
-    return (
+    const isEqual =
       prev.map === next.map &&
       prev.name === next.name &&
       prev.position[0] === next.position[0] &&
-      prev.position[1] === next.position[1]
-    );
+      prev.position[1] === next.position[1];
+
+    return isEqual;
   }
 );
 
