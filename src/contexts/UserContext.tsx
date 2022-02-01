@@ -2,20 +2,17 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { SignInContext } from "./SignInContext";
 import AppError from "../components/AppError/AppError";
 import { getDatabase, ref, get, child } from "firebase/database";
+import { IUser } from "../types/IUser";
 
 interface UserContextValue {
   canViewMarkers: boolean;
   canEditMarkers: boolean;
   user: IUser;
+  users: Record<string, IUser>;
   loading: boolean;
 }
 
-interface IUser {
-  role: string;
-  name: string;
-  uid: string;
-  email: string | null;
-}
+type IUserInfo = Exclude<IUser, "uid">;
 
 export const UserContext = createContext<UserContextValue>(
   {} as UserContextValue
@@ -24,6 +21,7 @@ export const UserContext = createContext<UserContextValue>(
 export const UserProvider: React.FC = ({ children }) => {
   const { googleAccount } = useContext(SignInContext);
   const [user, setUser] = useState<IUser | null>(null);
+  const [users, setUsers] = useState<Record<string, IUserInfo> | null>(null);
   const [loading, setLoading] = useState(false);
   const [loadError, setLoadError] = useState<Error | null>(null);
 
@@ -35,12 +33,12 @@ export const UserProvider: React.FC = ({ children }) => {
 
     setLoading(true);
 
-    get(child(ref(getDatabase()), "/users/" + googleAccount.uid))
+    get(child(ref(getDatabase()), "/users"))
       .then((snapshot) => {
-        const result = snapshot.val() as { name: string; role: string };
+        const result = snapshot.val() as Record<string, IUserInfo>;
+        setUsers(result);
         setUser({
-          ...result,
-          email: googleAccount.email,
+          ...result[googleAccount.uid],
           uid: googleAccount.uid,
         });
         setLoading(false);
@@ -64,7 +62,7 @@ export const UserProvider: React.FC = ({ children }) => {
     return <AppError error="Error signing in" />;
   }
 
-  if (!user?.role || !["player", "dm"].includes(user.role)) {
+  if (!users || !user?.role || !["player", "dm"].includes(user.role)) {
     return <AppError error="You are not allowed to be here" />;
   }
 
@@ -73,7 +71,7 @@ export const UserProvider: React.FC = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ canViewMarkers, canEditMarkers, loading, user }}
+      value={{ canViewMarkers, canEditMarkers, loading, user, users }}
     >
       {children}
     </UserContext.Provider>

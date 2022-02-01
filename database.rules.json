@@ -1,11 +1,9 @@
 {
   "rules": {
     "users": {
-      "$uid": {
-        ".read": "auth != null && auth.uid == $uid"
-      }
+      ".read": "auth != null && auth.uid != null"
     },
-    "positions": {
+    "xy": {
       ".read": "auth != null && auth.uid != null && root.child('users/' + auth.uid + '/role').exists() && (root.child('users/' + auth.uid + '/role').val() === 'dm' || root.child('users/' + auth.uid + '/role').val() === 'player')",
       "$uid": {
         ".read": "auth != null && auth.uid != null && root.child('users/' + auth.uid + '/role').exists() && (root.child('users/' + auth.uid + '/role').val() === 'dm' || root.child('users/' + auth.uid + '/role').val() === 'player')",

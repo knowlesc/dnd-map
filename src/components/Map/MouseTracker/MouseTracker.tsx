@@ -6,23 +6,28 @@ import { useThrottleFn } from "react-use";
 import { MapContext } from "../../../contexts/MapContext";
 import { UserContext } from "../../../contexts/UserContext";
 import { PositionContext } from "../../../contexts/PositionContext";
-import { IPosition } from "../../../types/IPosition";
+import {
+  deserializePosition,
+  serializePosition,
+} from "../../../types/IPosition";
 
 export const MouseTracker: React.FC = () => {
   const [position, setPosition] = React.useState<LatLngTuple | null>(null);
-  const { user } = React.useContext(UserContext);
+  const { user, users } = React.useContext(UserContext);
   const { mapName } = React.useContext(MapContext);
   const { setPositions } = React.useContext(PositionContext);
 
   const updatePosition = React.useCallback(
     (latlng: [number, number]) => {
-      set(ref(getDatabase(), `/positions/${user.uid}`), {
-        position: latlng,
-        map: mapName,
-        time: Date.now(),
-        name: user.name,
-        role: user.role,
-      } as IPosition).catch(console.error);
+      set(ref(getDatabase(), `/xy/${user.uid}`), {
+        p: serializePosition({
+          position: latlng,
+          map: mapName,
+          time: Date.now(),
+          name: user.name,
+          role: user.role,
+        }),
+      }).catch(console.error);
     },
     [mapName, user]
   );
@@ -34,17 +39,17 @@ export const MouseTracker: React.FC = () => {
    */
   React.useEffect(() => {
     const cancel = onValue(
-      ref(getDatabase(), `/positions`),
+      ref(getDatabase(), `/xy`),
       (snapshot) => {
         const thirtySecondsAgo = Date.now() - 30 * 1000;
         const allPositions =
-          (snapshot.val() as Record<string, IPosition>) ?? {};
+          (snapshot.val() as Record<string, { p: string }>) ?? {};
         const relevantPositions = Object.entries(allPositions)
+          .filter(([uid]) => uid !== user.uid)
+          .map(([uid, { p }]) => deserializePosition(p, users[uid]))
           .filter(
-            ([uid, { map, time }]) =>
-              uid !== user.uid && map === mapName && time > thirtySecondsAgo
-          )
-          .map(([, value]) => value);
+            ({ map, time }) => map === mapName && time > thirtySecondsAgo
+          );
 
         setPositions(relevantPositions);
       },
