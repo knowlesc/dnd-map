@@ -21,6 +21,7 @@ export const MouseTracker: React.FC = () => {
         map: mapName,
         time: Date.now(),
         name: user.name,
+        role: user.role,
       } as IPosition).catch(console.error);
     },
     [mapName, user]
