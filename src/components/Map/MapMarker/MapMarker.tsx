@@ -12,7 +12,7 @@ import MarkerPopup from "../MarkerPopup/MarkerPopup";
 import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 
-const truncateAfterChars = 35;
+const truncateAfterChars = 45;
 
 export const MapMarker: React.FC<{ marker: IMarker }> = ({ marker }) => {
   const { setMarker } = React.useContext(MarkerContext);
