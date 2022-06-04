@@ -33,6 +33,8 @@ export const MapBody: React.FC = () => {
         [0, 0],
         [sizeY, sizeX],
       ]}
+      inertia={false}
+      maxBoundsViscosity={1}
       whenCreated={(map) => map.setZoom(DEFAULT_ZOOM)}
     >
       <MapInner />
