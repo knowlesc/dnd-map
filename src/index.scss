@@ -140,7 +140,20 @@ input[type="checkbox"] {
   filter: drop-shadow(15px 15px 50px black);
 }
 
-@media only screen and (max-width: 600px) {
+// TODO: do this without needing !important
+@media only screen and (max-height: 600px) {
+  .app-header {
+    height: $header-height - 20px !important;
+    line-height: $header-height - 20px !important;
+  }
+
+  .app-body,
+  .app-logo-dropdown {
+    top: $header-height - 20px !important;
+  }
+}
+
+@media only screen and (max-width: 600px), only screen and (max-height: 600px) {
   .app-header {
     padding-left: $content-horizontal-padding / 2;
     padding-right: $content-horizontal-padding / 2;
@@ -148,6 +161,8 @@ input[type="checkbox"] {
 
   button {
     font-size: $button-font-size - 2px;
+    height: $button-height - 4px;
+    padding: (nth($button-padding, 1)) (nth($button-padding, 2) - 10px);
   }
 
   .app-logo {
@@ -155,7 +170,7 @@ input[type="checkbox"] {
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 500px), only screen and (max-height: 500px) {
   .app-header {
     padding-left: $content-horizontal-padding / 4;
     padding-right: $content-horizontal-padding / 4;
@@ -166,7 +181,7 @@ input[type="checkbox"] {
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 400px), only screen and (max-height: 400px) {
   button {
     font-size: $button-font-size - 6px;
   }
