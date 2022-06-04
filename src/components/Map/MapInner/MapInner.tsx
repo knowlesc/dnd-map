@@ -7,6 +7,7 @@ import { MapContext } from "../../../contexts/MapContext";
 import { PositionProvider } from "../../../contexts/PositionContext";
 import MouseTracker from "../MouseTracker/MouseTracker";
 import MousePositions from "../MousePositions/MousePositions";
+import { DEFAULT_ZOOM } from "../../../constants/Map";
 
 export const MapInner: React.FC = () => {
   const { markers } = React.useContext(MarkerContext);
@@ -18,7 +19,7 @@ export const MapInner: React.FC = () => {
     if (!ref.current) return;
     const newBounds = new LatLngBounds([0, 0], [sizeY, sizeX]);
     ref.current.setBounds(newBounds);
-    map.setZoom(-1);
+    map.setZoom(DEFAULT_ZOOM);
     map.fitBounds(newBounds);
     map.setMaxBounds(newBounds);
   }, [map, imageUrl, sizeX, sizeY]);
