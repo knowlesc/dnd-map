@@ -6,6 +6,7 @@ import * as uuid from "uuid";
 import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { Colors } from "../../../constants/Colors";
+import Button from "../../Button/Button";
 
 export const MarkerControl: React.FC = () => {
   const map = useMap();
@@ -18,7 +19,7 @@ export const MarkerControl: React.FC = () => {
     <div className="leaflet-bottom leaflet-right">
       <div className="leaflet-control">
         <div className="marker-control">
-          <button
+          <Button
             className="add-marker"
             onClick={() => {
               const center = map.getCenter();
@@ -39,7 +40,7 @@ export const MarkerControl: React.FC = () => {
             }}
           >
             New Marker
-          </button>
+          </Button>
         </div>
       </div>
     </div>

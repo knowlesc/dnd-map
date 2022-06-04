@@ -9,6 +9,7 @@ import { UserContext } from "../../../contexts/UserContext";
 import { Colors } from "../../../constants/Colors";
 import { Icons } from "../../../constants/Icons";
 import { MapContext } from "../../../contexts/MapContext";
+import Button from "../../Button/Button";
 
 function move(array: string[], current: string, amount: number) {
   const index = array.find((a) => a === current) ? array.indexOf(current) : -1;
@@ -146,12 +147,12 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
             </div>
 
             <div className="marker-buttons">
-              <button className="action sm" onClick={save}>
+              <Button className="action sm" onClick={save}>
                 save
-              </button>
-              <button className="warn sm" onClick={() => removeMarker(marker)}>
+              </Button>
+              <Button className="warn sm" onClick={() => removeMarker(marker)}>
                 delete
-              </button>
+              </Button>
             </div>
           </>
         )}

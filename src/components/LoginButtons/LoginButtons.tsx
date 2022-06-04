@@ -1,6 +1,7 @@
 import "./LoginButtons.scss";
 import * as React from "react";
 import { SignInContext } from "../../contexts/SignInContext";
+import Button from "../Button/Button";
 
 export const LoginButtons: React.FC = () => {
   const { signIn, signOut, googleAccount } = React.useContext(SignInContext);
@@ -8,14 +9,14 @@ export const LoginButtons: React.FC = () => {
   return (
     <div className="login-buttons">
       {!googleAccount && (
-        <button className="dark" onClick={signIn}>
+        <Button className="dark" onClick={signIn}>
           Sign In with Google
-        </button>
+        </Button>
       )}
       {googleAccount && (
-        <button className="dark" onClick={signOut}>
+        <Button className="dark" onClick={signOut}>
           Sign Out
-        </button>
+        </Button>
       )}
     </div>
   );

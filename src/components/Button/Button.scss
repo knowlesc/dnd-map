@@ -1,0 +1,91 @@
+@import "../../variables.scss";
+
+button {
+  cursor: pointer;
+  font-size: $button-font-size;
+  padding: $button-padding;
+  text-transform: uppercase;
+  font-weight: 700;
+  height: $button-height;
+  color: $font-color;
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border-radius: $button-radius;
+  background: $color-light-gradient;
+  border: $button-border-width solid $font-color;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: background-position 80ms linear;
+  background-size: 350px;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    transition: background-position 80ms linear;
+    background-position: -80px;
+  }
+
+  &.sm {
+    font-size: $button-font-size - 2px;
+    height: $button-height - 4px;
+    padding: (nth($button-padding, 1)) (nth($button-padding, 2) - 5px);
+  }
+
+  &.dark {
+    color: $font-color-light;
+    background: $color-dark-gradient;
+    background-size: 300px;
+
+    &:hover {
+      transition: background-position 80ms linear;
+      background-position: -80px;
+    }
+  }
+
+  &.action {
+    color: $font-color-light;
+    background: $color-action-gradient;
+    background-size: 300px;
+
+    &:hover {
+      transition: background-position 80ms linear;
+      background-position: -80px;
+    }
+  }
+
+  &.warn {
+    color: $font-color-light;
+    background: $color-warn-gradient;
+    background-size: 300px;
+
+    &:hover {
+      transition: background-position 80ms linear;
+      background-position: -80px;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-1),
+  only screen and (max-height: $breakpoint-1) {
+  button {
+    font-size: $button-font-size - 2px;
+    height: $button-height - 4px;
+    padding: (nth($button-padding, 1)) (nth($button-padding, 2) - 10px);
+  }
+}
+
+@media only screen and (max-width: $breakpoint-2),
+  only screen and (max-height: $breakpoint-2) {
+  button {
+    font-size: $button-font-size - 4px;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-3),
+  only screen and (max-height: $breakpoint-3) {
+  button {
+    font-size: $button-font-size - 6px;
+  }
+}
