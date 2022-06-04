@@ -1,5 +1,9 @@
 @import "../../../variables.scss";
 
+.leaflet-popup-content-wrapper {
+  border-radius: 2px !important;
+}
+
 .marker-popup {
   input[type="text"] {
     width: 100%;
@@ -14,18 +18,37 @@
   }
 
   .leaflet-popup-close-button {
-    margin: 15px 20px 0 0 !important;
-    font-size: 24px !important;
+    display: none;
+  }
+
+  .marker-details {
+    display: flex;
+    align-items: center;
+
+    .marker-select {
+      cursor: pointer;
+      margin-right: 2px;
+      margin-left: 2px;
+      flex: 0 0 30px;
+      font-size: 24px;
+    }
+  }
+
+  .marker-checkbox-container {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 3px;
   }
 
   .marker-checkbox {
     font-size: 1.1em;
     font-weight: 600;
     margin-top: 10px;
+    line-height: 1;
   }
 
   .marker-notes {
-    margin-top: 15px;
+    margin-top: 10px;
     white-space: pre-line;
 
     textarea {
@@ -36,34 +59,6 @@
   .marker-popup-body {
     margin-top: 19px;
     margin-bottom: 15px;
-
-    .marker-select-container {
-      margin-top: -3px;
-      margin-bottom: 15px;
-      padding-right: 30px;
-      display: flex;
-
-      .marker-select {
-        display: flex;
-        justify-content: space-around;
-        flex: 1;
-        font-size: 24px;
-
-        .arrow {
-          cursor: pointer;
-          opacity: 0.7;
-
-          &:hover {
-            opacity: 1;
-          }
-        }
-
-        .switch {
-          flex: 0 0 32px;
-          text-align: center;
-        }
-      }
-    }
   }
 
   .marker-popup-coords {
@@ -72,8 +67,8 @@
     display: flex;
     flex-flow: row nowrap;
 
-    div:not(:last-of-type) {
-      padding-right: 5px;
+    div {
+      width: 100%;
     }
 
     input {
@@ -85,8 +80,7 @@
     white-space: nowrap;
     display: flex;
     justify-content: right;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    margin-top: 10px;
 
     button {
       &:not(:last-of-type) {

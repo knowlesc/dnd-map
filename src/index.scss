@@ -52,12 +52,11 @@ code {
 input[type="text"],
 input[type="number"],
 textarea {
-  font-size: 14px;
+  font-size: 13px;
   font-family: $font-family;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
+  border: 2px solid $color-light;
+  border-radius: 2px;
   padding: 5px;
-  background: #f2f2f2;
 }
 
 input[type="checkbox"] {
@@ -71,6 +70,15 @@ input[type="checkbox"] {
 
 .leaflet-image-layer {
   filter: drop-shadow(15px 15px 50px black);
+}
+
+.leaflet-control-attribution {
+  background: transparent !important;
+
+  a {
+    color: $font-color-light !important;
+    opacity: 0.4;
+  }
 }
 
 @media only screen and (max-width: $breakpoint-1),

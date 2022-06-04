@@ -1,8 +1,16 @@
 @import "../../variables.scss";
 
+$button-height: 48px;
+$button-border-width: 2px;
+$button-font-size: 18px;
+$button-padding: 8px 20px;
+$button-radius: 2px;
+$button-shadow: none;
+
 button {
   cursor: pointer;
   font-size: $button-font-size;
+  letter-spacing: 1px;
   padding: $button-padding;
   text-transform: uppercase;
   font-weight: 700;
@@ -13,8 +21,10 @@ button {
   -moz-osx-font-smoothing: grayscale;
   border-radius: $button-radius;
   background: $color-light-gradient;
-  border: $button-border-width solid $font-color;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-color: $color-light;
+  border-width: $button-border-width;
+  border-style: solid;
+  box-shadow: $button-shadow;
   transition: background-position 80ms linear;
   background-size: 350px;
 
@@ -36,6 +46,7 @@ button {
   &.dark {
     color: $font-color-light;
     background: $color-dark-gradient;
+    border-color: $color-dark;
     background-size: 300px;
 
     &:hover {
@@ -47,6 +58,7 @@ button {
   &.action {
     color: $font-color-light;
     background: $color-action-gradient;
+    border-color: $color-action;
     background-size: 300px;
 
     &:hover {
@@ -58,6 +70,7 @@ button {
   &.warn {
     color: $font-color-light;
     background: $color-warn-gradient;
+    border-color: $color-warn;
     background-size: 300px;
 
     &:hover {

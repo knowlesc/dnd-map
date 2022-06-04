@@ -54,63 +54,60 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
   return (
     <Popup className="marker-popup" minWidth={150}>
       <div className="marker-popup-body">
-        <div className="marker-popup-readonly">
-          <strong>{!canEditMarkers && marker.name}</strong>
-          {!canEditMarkers && (
+        {!canEditMarkers && (
+          <div className="marker-popup-readonly">
+            <strong>{marker.name}</strong>
             <div className="marker-notes">{marker.notes}</div>
-          )}
-        </div>
+          </div>
+        )}
 
         {canEditMarkers && (
           <>
-            <div className="marker-select-container">
+            <div className="marker-details">
               <div className="marker-select">
                 <FontAwesomeIcon
-                  className="arrow"
-                  icon="chevron-left"
-                  onClick={() => updateIcon(-1)}
-                />
-                <FontAwesomeIcon className="switch" icon={icon as IconProp} />
-                <FontAwesomeIcon
-                  className="arrow"
-                  icon="chevron-right"
+                  className="switch"
                   onClick={() => updateIcon(1)}
+                  icon={icon as IconProp}
                 />
               </div>
               <div className="marker-select">
-                <FontAwesomeIcon
-                  className="arrow"
-                  icon="chevron-left"
-                  onClick={() => updateColor(-1)}
-                />
                 <FontAwesomeIcon
                   className="switch"
                   icon="square"
+                  onClick={() => updateColor(-1)}
                   color={color}
                 />
-                <FontAwesomeIcon
-                  className="arrow"
-                  icon="chevron-right"
-                  onClick={() => updateColor(1)}
-                />
               </div>
+              <input
+                type="text"
+                defaultValue={marker.name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
 
-            <input
-              type="text"
-              defaultValue={marker.name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <div className="marker-checkbox-container">
+              <div className="marker-checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    defaultChecked={marker.circle}
+                    onChange={(e) => setCircle(e.target.checked)}
+                  />
+                  Circle
+                </label>
+              </div>
 
-            <div className="marker-checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  defaultChecked={marker.circle}
-                  onChange={(e) => setCircle(e.target.checked)}
-                />
-                Circle
-              </label>
+              <div className="marker-checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    defaultChecked={marker.dmOnly}
+                    onChange={(e) => setDmOnly(e.target.checked)}
+                  />
+                  DM only
+                </label>
+              </div>
             </div>
 
             {circle && (
@@ -133,17 +130,6 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
                 defaultValue={marker.notes}
                 onChange={(e) => setNotes(e.target.value)}
               ></textarea>
-            </div>
-
-            <div className="marker-checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  defaultChecked={marker.dmOnly}
-                  onChange={(e) => setDmOnly(e.target.checked)}
-                />
-                Visible to DM only
-              </label>
             </div>
 
             <div className="marker-buttons">
