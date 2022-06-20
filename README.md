@@ -1,8 +1,9 @@
-# DND Map
+# D&D Map
 
-Map browser for DND using firebase.
+Map browser for D&D using react-leaflet, with firebase realtime database integration. Shows location of mouse cursors on the map for anyone currently logged in.
 
-![Example](example.webp)
+<img src="example2.webp" height="400">
+<img src="example1.webp" height="400">
 
 ## Config
 
