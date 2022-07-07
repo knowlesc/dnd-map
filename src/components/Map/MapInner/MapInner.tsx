@@ -3,26 +3,27 @@ import { ImageOverlay, useMap } from "react-leaflet";
 import { ImageOverlay as LeafletImageOverlay, LatLngBounds } from "leaflet";
 import MapMarker from "../MapMarker/MapMarker";
 import { MarkerContext } from "../../../contexts/MarkerContext";
-import { MapContext } from "../../../contexts/MapContext";
 import { PositionProvider } from "../../../contexts/PositionContext";
 import MouseTracker from "../MouseTracker/MouseTracker";
 import MousePositions from "../MousePositions/MousePositions";
 import { DEFAULT_ZOOM } from "../../../constants/Map";
+import { ImageContext } from "../../../contexts/ImageContext";
 
 export const MapInner: React.FC = () => {
   const { markers } = React.useContext(MarkerContext);
-  const { imageUrl, sizeX, sizeY } = React.useContext(MapContext);
+  const { imageUrl, sizeX, sizeY, loading } = React.useContext(ImageContext);
+
   const map = useMap();
   const ref = React.useRef<LeafletImageOverlay>(null);
 
   React.useEffect(() => {
-    if (!ref.current) return;
+    if (!ref.current || loading) return;
     const newBounds = new LatLngBounds([0, 0], [sizeY, sizeX]);
     ref.current.setBounds(newBounds);
     map.setZoom(DEFAULT_ZOOM);
     map.fitBounds(newBounds);
     map.setMaxBounds(newBounds);
-  }, [map, imageUrl, sizeX, sizeY]);
+  }, [map, sizeX, sizeY, loading]);
 
   return (
     <>

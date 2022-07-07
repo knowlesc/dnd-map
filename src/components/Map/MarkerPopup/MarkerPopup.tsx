@@ -8,7 +8,6 @@ import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { Colors } from "../../../constants/Colors";
 import { Icons } from "../../../constants/Icons";
-import { MapContext } from "../../../contexts/MapContext";
 import Button from "../../Button/Button";
 
 function move(array: string[], current: string, amount: number) {

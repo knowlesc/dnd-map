@@ -11,10 +11,10 @@ export const App: React.FC = () => {
           path="/"
           element={<AppContext mapName={mapConfig[0].mapName} />}
         />
-        {mapConfig.map(({ mapName, path }) => (
+        {mapConfig.map(({ mapName }) => (
           <Route
             key={mapName}
-            path={path}
+            path={`/${mapName}`}
             element={<AppContext mapName={mapName} />}
           />
         ))}

@@ -1,7 +1,10 @@
 import { createContext } from "react";
-import { MapConfig, mapConfig } from "../config/mapConfig";
+import { mapConfig } from "../config/mapConfig";
 
-type MapContextValue = MapConfig;
+type MapContextValue = {
+  mapName: string;
+  displayName: string;
+};
 
 export const MapContext = createContext<MapContextValue>({} as MapContextValue);
 
@@ -14,6 +17,8 @@ export const MapProvider: React.FC<{ mapName: string }> = ({
   if (!config) return null;
 
   return (
-    <MapContext.Provider value={{ ...config }}>{children}</MapContext.Provider>
+    <MapContext.Provider value={{ mapName, displayName: config.displayName }}>
+      {children}
+    </MapContext.Provider>
   );
 };

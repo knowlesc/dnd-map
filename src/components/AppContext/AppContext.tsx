@@ -6,6 +6,7 @@ import { UserProvider } from "../../contexts/UserContext";
 import AppBody from "../AppBody/AppBody";
 import AppHeader from "../AppHeader/AppHeader";
 import { MapProvider } from "../../contexts/MapContext";
+import { ImageProvider } from "../../contexts/ImageContext";
 
 interface AppConfig {
   mapName: string;
@@ -18,11 +19,13 @@ export const AppContext: React.FC<AppConfig> = ({ mapName }) => {
         <MapProvider mapName={mapName}>
           <AppHeader />
           <UserProvider>
-            <SaveProvider>
-              <MarkerProvider>
-                <AppBody />
-              </MarkerProvider>
-            </SaveProvider>
+            <ImageProvider>
+              <SaveProvider>
+                <MarkerProvider>
+                  <AppBody />
+                </MarkerProvider>
+              </SaveProvider>
+            </ImageProvider>
           </UserProvider>
         </MapProvider>
       </SignInProvider>

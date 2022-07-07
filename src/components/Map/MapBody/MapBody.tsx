@@ -6,14 +6,14 @@ import MapInner from "../MapInner/MapInner";
 import { MarkerControl } from "../MarkerControl/MarkerControl";
 import { SaveIndicator } from "../SaveIndicator/SaveIndicator";
 import { UserContext } from "../../../contexts/UserContext";
-import { MapContext } from "../../../contexts/MapContext";
 import { DEFAULT_ZOOM, MAX_ZOOM, MIN_ZOOM } from "../../../constants/Map";
 import { DEBUG } from "../../../config/debugConfig";
 import DebugMap from "../../DebugMap/DebugMap";
+import { ImageContext } from "../../../contexts/ImageContext";
 
 export const MapBody: React.FC = () => {
   const { canEditMarkers } = React.useContext(UserContext);
-  const { sizeX, sizeY } = React.useContext(MapContext);
+  const { sizeX, sizeY } = React.useContext(ImageContext);
 
   return (
     <MapContainer

@@ -2,11 +2,11 @@ import "./DebugMap.scss";
 import * as React from "react";
 import { useMap } from "react-leaflet";
 import { LatLngBounds } from "leaflet";
-import { MapContext } from "../../contexts/MapContext";
+import { ImageContext } from "../../contexts/ImageContext";
 
 export const DebugMap: React.FC = () => {
   const map = useMap();
-  const { sizeX, sizeY } = React.useContext(MapContext);
+  const { sizeX, sizeY } = React.useContext(ImageContext);
   const [zoom, setZoom] = React.useState(map.getZoom());
 
   React.useEffect(() => {
