@@ -19,8 +19,11 @@ export const AppLogo: React.FC = () => {
               className="app-logo-selector"
               onClick={() => setOpened(!opened)}
             >
-              {displayName}{" "}
-              <FontAwesomeIcon icon={opened ? "caret-up" : "caret-down"} />
+              {displayName}
+              <FontAwesomeIcon
+                icon={opened ? "angle-up" : "angle-down"}
+                style={{ marginLeft: "15px" }}
+              />
             </div>
             <div className={"app-logo-dropdown" + (opened ? " opened" : "")}>
               <div className="app-logo-links">

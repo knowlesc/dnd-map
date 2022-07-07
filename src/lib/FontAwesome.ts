@@ -1,9 +1,10 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-  faCaretDown,
-  faCaretUp,
+  faAngleDown,
+  faAngleUp,
   faMap,
   faMapLocationDot,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 /**
@@ -11,4 +12,4 @@ import {
  * maybe because all the other icons load much later with the
  * map.
  */
-library.add(faCaretDown, faCaretUp, faMap, faMapLocationDot);
+library.add(faAngleDown, faAngleUp, faMap, faUser, faMapLocationDot);

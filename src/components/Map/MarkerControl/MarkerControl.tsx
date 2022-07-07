@@ -7,6 +7,7 @@ import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { Colors } from "../../../constants/Colors";
 import Button from "../../Button/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const MarkerControl: React.FC = () => {
   const map = useMap();
@@ -39,6 +40,10 @@ export const MarkerControl: React.FC = () => {
               addMarker(marker);
             }}
           >
+            <FontAwesomeIcon
+              icon="map-marker-alt"
+              style={{ marginRight: "10px" }}
+            />
             New Marker
           </Button>
         </div>
