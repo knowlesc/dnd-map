@@ -26,29 +26,6 @@
       transform: scaleY(1);
       transition: all 0.1s ease;
     }
-
-    .app-logo-links {
-      display: flex;
-      flex-flow: column nowrap;
-
-      a {
-        padding: 0 40px;
-        color: $font-color-light;
-        text-decoration: none;
-        background-size: 1000px !important;
-        background: $color-dark-gradient;
-        transition: background-position 80ms linear;
-
-        &:hover {
-          background-position: -500px;
-          transition: background-position 80ms linear;
-        }
-
-        svg {
-          margin-right: 15px;
-        }
-      }
-    }
   }
 }
 

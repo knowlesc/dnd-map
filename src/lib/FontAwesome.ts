@@ -3,11 +3,12 @@ import {
   faCaretDown,
   faCaretUp,
   faMap,
+  faMapLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 
 /**
- * For some reason this is the only one that needs to load here
+ * For some reason these are the only ones that need to load here
  * maybe because all the other icons load much later with the
  * map.
  */
-library.add(faCaretDown, faCaretUp, faMap);
+library.add(faCaretDown, faCaretUp, faMap, faMapLocationDot);

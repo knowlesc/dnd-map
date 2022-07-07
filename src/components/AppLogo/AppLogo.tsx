@@ -1,10 +1,9 @@
 import "./AppLogo.scss";
 import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
 import { MapContext } from "../../contexts/MapContext";
 import { SignInContext } from "../../contexts/SignInContext";
-import { mapConfig } from "../../config/mapConfig";
+import MapLinkList from "../MapLinkList/MapLinkList";
 
 export const AppLogo: React.FC = () => {
   const [opened, setOpened] = useState(false);
@@ -25,15 +24,7 @@ export const AppLogo: React.FC = () => {
             </div>
             <div className={"app-logo-dropdown" + (opened ? " opened" : "")}>
               <div className="app-logo-links">
-                {mapConfig.map(({ mapName, displayName }) => (
-                  <Link
-                    key={mapName}
-                    to={`/${mapName}`}
-                    onClick={() => setOpened(false)}
-                  >
-                    <FontAwesomeIcon icon="map" /> {displayName}
-                  </Link>
-                ))}
+                <MapLinkList onClick={() => setOpened(false)} />
               </div>
             </div>{" "}
           </>

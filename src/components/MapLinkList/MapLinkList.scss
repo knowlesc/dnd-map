@@ -1,0 +1,28 @@
+@import "../../variables.scss";
+
+.map-link-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto max-content auto;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 80px;
+}
+
+a.map-link {
+  display: block;
+  padding: 0 40px;
+  color: $font-color-light;
+  text-decoration: none;
+  background-size: 1000px !important;
+  transition: background-position 80ms linear;
+
+  &:hover {
+    background-position: -500px;
+    transition: background-position 80ms linear;
+  }
+
+  svg {
+    margin-right: 15px;
+  }
+}
