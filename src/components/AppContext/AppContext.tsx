@@ -15,20 +15,18 @@ interface AppConfig {
 export const AppContext: React.FC<AppConfig> = ({ mapName }) => {
   return (
     <>
-      <SignInProvider>
-        <MapProvider mapName={mapName}>
-          <AppHeader />
-          <UserProvider>
-            <ImageProvider>
-              <SaveProvider>
-                <MarkerProvider>
-                  <AppBody />
-                </MarkerProvider>
-              </SaveProvider>
-            </ImageProvider>
-          </UserProvider>
-        </MapProvider>
-      </SignInProvider>
+      <MapProvider mapName={mapName}>
+        <AppHeader />
+        <UserProvider>
+          <ImageProvider>
+            <SaveProvider>
+              <MarkerProvider>
+                <AppBody />
+              </MarkerProvider>
+            </SaveProvider>
+          </ImageProvider>
+        </UserProvider>
+      </MapProvider>
     </>
   );
 };

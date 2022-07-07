@@ -14,7 +14,7 @@ export const AppLogo: React.FC = () => {
   return (
     <>
       <div className="app-logo">
-        {googleAccount && (
+        {googleAccount && displayName && (
           <>
             <div
               className="app-logo-selector"

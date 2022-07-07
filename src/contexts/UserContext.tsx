@@ -3,6 +3,7 @@ import { SignInContext } from "./SignInContext";
 import AppError from "../components/AppError/AppError";
 import { getDatabase, ref, get, child } from "firebase/database";
 import { IUser } from "../types/IUser";
+import NotLoggedIn from "../components/NotLoggedIn/NotLoggedIn";
 
 interface UserContextValue {
   canViewMarkers: boolean;
@@ -55,7 +56,7 @@ export const UserProvider: React.FC = ({ children }) => {
   }
 
   if (!googleAccount) {
-    return <AppError error="Not signed in" />;
+    return <NotLoggedIn />;
   }
 
   if (loadError) {
