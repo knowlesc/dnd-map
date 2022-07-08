@@ -14,9 +14,13 @@ import { UserContext } from "../../../contexts/UserContext";
 
 const truncateAfterChars = 45;
 
-export const MapMarker: React.FC<{ marker: IMarker }> = ({ marker }) => {
+type Props = { marker: IMarker };
+
+export const MapMarker = ({ marker }: Props) => {
   const { setMarker } = React.useContext(MarkerContext);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const markerRef = React.useRef<LeafletMarker<any>>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const circleRef = React.useRef<LeafletCircle<any>>(null);
   const { canEditMarkers } = React.useContext(UserContext);
 
@@ -51,9 +55,7 @@ export const MapMarker: React.FC<{ marker: IMarker }> = ({ marker }) => {
               style={{ color: marker.color }}
               className={`fas fa-${marker.icon} map-marker-icon`}
             />
-            {marker.dmOnly && (
-              <i className={`fas fa-lock map-marker-private`} />
-            )}
+            {marker.dmOnly && <i className="fas fa-lock map-marker-private" />}
             <span className="map-marker-name">
               {marker.name.length < truncateAfterChars
                 ? marker.name

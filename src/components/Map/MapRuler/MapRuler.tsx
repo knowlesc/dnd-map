@@ -10,7 +10,7 @@ import {
 import { LatLng, Map } from "leaflet";
 import { RulerContext } from "../../../contexts/RulerContext";
 import { MapContext } from "../../../contexts/MapContext";
-import RulerControl from "../RulerControl/RulerControl";
+import { RulerControl } from "../RulerControl/RulerControl";
 
 function calculateDistance(
   map: Map,
@@ -30,7 +30,7 @@ function calculateDistance(
   return distance;
 }
 
-export default function MapRuler() {
+export const MapRuler: React.FC = () => {
   const [mousePosition, setMousePosition] = useState<LatLng | null>(null);
   const [showMouse, setShowMouse] = useState(true);
   const { addPoint, rulerPoints, rulerMode } = useContext(RulerContext);
@@ -99,4 +99,4 @@ export default function MapRuler() {
       ))}
     </>
   );
-}
+};

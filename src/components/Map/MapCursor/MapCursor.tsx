@@ -22,7 +22,7 @@ export const MapCursor: React.FC<{
         }`,
         html: renderToString(
           <>
-            <i className={`fas fa-mouse-pointer map-cursor-icon`} />
+            <i className="fas fa-mouse-pointer map-cursor-icon" />
             <span className="map-marker-name">{p.name}</span>
           </>
         ),

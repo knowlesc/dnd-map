@@ -4,7 +4,9 @@ import { IPosition } from "../../../types/IPosition";
 import MapCursor from "../MapCursor/MapCursor";
 
 const CursorMemo = React.memo(
-  ({ p }: { p: IPosition }) => <MapCursor p={p} />,
+  function CursorMemo({ p }: { p: IPosition }) {
+    return <MapCursor p={p} />;
+  },
   ({ p: prev }, { p: next }) => {
     const isEqual =
       prev.map === next.map &&

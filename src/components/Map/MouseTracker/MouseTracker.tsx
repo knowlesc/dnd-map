@@ -39,7 +39,7 @@ export const MouseTracker: React.FC = () => {
    */
   React.useEffect(() => {
     const cancel = onValue(
-      ref(getDatabase(), `/xy`),
+      ref(getDatabase(), "/xy"),
       (snapshot) => {
         const thirtySecondsAgo = Date.now() - 30 * 1000;
         const allPositions =
@@ -71,11 +71,11 @@ export const MouseTracker: React.FC = () => {
     setPosition([e.latlng.lat, e.latlng.lng]);
   });
 
-  useMapEvent("zoomstart", (e) => {
+  useMapEvent("zoomstart", () => {
     document.getElementById("root")?.classList.add("zooming");
   });
 
-  useMapEvent("zoomend", (e) => {
+  useMapEvent("zoomend", () => {
     document.getElementById("root")?.classList.remove("zooming");
   });
 
