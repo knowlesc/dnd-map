@@ -1,0 +1,14 @@
+@import "../../../variables.scss";
+
+path.map-ruler {
+  stroke: #333;
+}
+
+path.map-ruler-shadow {
+  stroke: white;
+}
+
+.map-ruler-point {
+  stroke: #333;
+  fill: white;
+}

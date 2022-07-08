@@ -1,3 +1,4 @@
+import "./MapRuler.scss";
 import { useContext, useState } from "react";
 import {
   Polyline,
@@ -65,8 +66,30 @@ export default function MapRuler() {
   return (
     <>
       <RulerControl />
+
+      <Polyline
+        className="map-ruler-shadow"
+        positions={positions}
+        dashArray={[8, 4]}
+        weight={6}
+        lineCap="square"
+      />
+      <Polyline
+        className="map-ruler"
+        positions={positions}
+        dashArray={[8, 4]}
+        weight={4}
+        lineCap="butt"
+      />
+
       {positions.map((point, i) => (
-        <CircleMarker key={i} center={point} radius={2}>
+        <CircleMarker
+          className="map-ruler-point"
+          key={i}
+          center={point}
+          radius={3}
+          fill={true}
+        >
           {i === positions.length - 1 && (
             <Tooltip permanent={true}>
               {distance} {distanceUnits}
@@ -74,7 +97,6 @@ export default function MapRuler() {
           )}
         </CircleMarker>
       ))}
-      <Polyline positions={positions} dashArray={[8, 8]} />
     </>
   );
 }
