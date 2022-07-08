@@ -6,6 +6,8 @@ export type MapConfig = {
   mapName: string;
   displayName: string;
   imageUrl: string;
+  scaleFactor?: number;
+  distanceUnits?: string;
 };
 
 export const mapConfig: MapConfig[] =

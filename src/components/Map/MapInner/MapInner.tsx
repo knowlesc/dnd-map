@@ -8,6 +8,8 @@ import MouseTracker from "../MouseTracker/MouseTracker";
 import MousePositions from "../MousePositions/MousePositions";
 import { DEFAULT_ZOOM } from "../../../constants/Map";
 import { ImageContext } from "../../../contexts/ImageContext";
+import { RulerProvider } from "../../../contexts/RulerContext";
+import MapRuler from "../MapRuler/MapRuler";
 
 export const MapInner: React.FC = () => {
   const { markers } = React.useContext(MarkerContext);
@@ -43,6 +45,10 @@ export const MapInner: React.FC = () => {
           <MouseTracker />
           <MousePositions />
         </PositionProvider>
+
+        <RulerProvider>
+          <MapRuler />
+        </RulerProvider>
       </ImageOverlay>
     </>
   );
