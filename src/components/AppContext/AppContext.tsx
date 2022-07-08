@@ -1,6 +1,5 @@
 import * as React from "react";
 import { MarkerProvider } from "../../contexts/MarkerContext";
-import { SignInProvider } from "../../contexts/SignInContext";
 import { SaveProvider } from "../../contexts/SaveContext";
 import { UserProvider } from "../../contexts/UserContext";
 import AppBody from "../AppBody/AppBody";
