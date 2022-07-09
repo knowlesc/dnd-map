@@ -14,16 +14,14 @@
   }
 
   .map-marker-icon {
-    font-size: 32px;
     filter: drop-shadow(0 0 1px $marker-highlight-color)
       drop-shadow(0 0 1px $marker-highlight-color)
       drop-shadow(0 0 1px $marker-highlight-color)
-      drop-shadow(0 0 2px $marker-highlight-color)
       drop-shadow(0 0 2px $marker-highlight-color);
 
     path {
       stroke: black;
-      stroke-width: 18px;
+      stroke-width: 16px;
     }
   }
 

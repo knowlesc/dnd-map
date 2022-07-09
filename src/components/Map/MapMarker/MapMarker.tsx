@@ -13,6 +13,7 @@ import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 
 const truncateAfterChars = 45;
+const iconSize = 28;
 
 type Props = { marker: IMarker };
 
@@ -45,14 +46,14 @@ export const MapMarker = ({ marker }: Props) => {
         },
       }}
       icon={divIcon({
-        iconSize: [32, 32],
-        iconAnchor: [16, 32],
-        popupAnchor: [0, -32],
+        iconSize: [iconSize, iconSize],
+        iconAnchor: [Math.round(iconSize / 2), iconSize],
+        popupAnchor: [0, -iconSize],
         className: "map-marker",
         html: renderToString(
           <>
             <i
-              style={{ color: marker.color }}
+              style={{ color: marker.color, fontSize: iconSize }}
               className={`fas fa-${marker.icon} map-marker-icon`}
             />
             {marker.dmOnly && <i className="fas fa-lock map-marker-private" />}
