@@ -20,6 +20,14 @@ export const Icons: string[] = [
   "icon-camp",
   "icon-smith",
   "icon-flag",
+  "icon-skull",
+  "icon-dragon",
+  "icon-combat",
+  "icon-hall",
+  "icon-animal",
+  "icon-treasure",
+  "icon-magic",
+  "icon-bow",
 ];
 export const iconSize = 30;
 

@@ -31,7 +31,7 @@ export const MarkerControl: React.FC = () => {
                 lng: center.lng,
                 name: "New Marker",
                 color: Colors[0],
-                icon: "map-marker-alt",
+                icon: "icon-marker",
                 dmOnly: true,
                 radius: 0,
                 notes: "",
