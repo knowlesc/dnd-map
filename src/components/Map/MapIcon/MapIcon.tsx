@@ -15,6 +15,7 @@ export const Icons: string[] = [
   "icon-signpost",
   "icon-trail",
   "icon-marker",
+  "icon-marker-red",
   "icon-religion",
   "icon-shop",
   "icon-camp",
