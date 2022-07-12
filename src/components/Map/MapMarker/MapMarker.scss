@@ -43,10 +43,7 @@
   }
 
   .map-marker-private {
-    position: absolute;
-    right: -0;
-    bottom: -0;
-    font-size: 1.1em;
+    margin-right: 3px;
 
     path {
       stroke: $marker-highlight-color;

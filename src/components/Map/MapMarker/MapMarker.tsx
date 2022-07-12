@@ -11,9 +11,9 @@ import { renderToString } from "react-dom/server";
 import MarkerPopup from "../MarkerPopup/MarkerPopup";
 import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
+import { iconSize, MapIcon } from "../MapIcon/MapIcon";
 
 const truncateAfterChars = 45;
-const iconSize = 28;
 
 type Props = { marker: IMarker };
 
@@ -52,12 +52,15 @@ export const MapMarker = ({ marker }: Props) => {
         className: "map-marker",
         html: renderToString(
           <>
-            <i
+            <MapIcon
+              icon={marker.icon}
               style={{ color: marker.color, fontSize: iconSize }}
-              className={`fas fa-${marker.icon} map-marker-icon`}
+              className="map-marker-icon"
             />
-            {marker.dmOnly && <i className="fas fa-lock map-marker-private" />}
             <span className="map-marker-name">
+              {marker.dmOnly && (
+                <i className="fas fa-lock map-marker-private" />
+              )}
               {marker.name.length < truncateAfterChars
                 ? marker.name
                 : marker.name.slice(0, truncateAfterChars - 3) + "..."}

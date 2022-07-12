@@ -2,13 +2,13 @@ import "./MarkerPopup.scss";
 import * as React from "react";
 import { Popup } from "react-leaflet";
 import { MarkerContext } from "../../../contexts/MarkerContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { Colors } from "../../../constants/Colors";
-import { Icons } from "../../../constants/Icons";
 import Button from "../../Button/Button";
+import { Icons, MapIcon } from "../MapIcon/MapIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function move(array: string[], current: string, amount: number) {
   const index = array.find((a) => a === current) ? array.indexOf(current) : -1;
@@ -25,6 +25,7 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
   const { removeMarker, setMarker } = React.useContext(MarkerContext);
   const [color, setColor] = React.useState(marker.color);
   const [icon, setIcon] = React.useState(marker.icon);
+  const [iconSelecting, setIconSelecting] = React.useState(false);
   const [name, setName] = React.useState(marker.name);
   const [notes, setNotes] = React.useState(marker.notes ?? "");
   const [dmOnly, setDmOnly] = React.useState(marker.dmOnly);
@@ -39,11 +40,6 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
   const updateColor = React.useCallback(
     (add) => setColor(move(Colors, color, add)),
     [color]
-  );
-
-  const updateIcon = React.useCallback(
-    (add) => setIcon(move(Icons, icon, add)),
-    [icon]
   );
 
   const save = React.useCallback(() => {
@@ -64,18 +60,9 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
           <>
             <div className="marker-details">
               <div className="marker-select">
-                <FontAwesomeIcon
-                  className="switch"
-                  onClick={() => updateIcon(1)}
+                <MapIcon
+                  onClick={() => setIconSelecting((s) => !s)}
                   icon={icon as IconProp}
-                />
-              </div>
-              <div className="marker-select">
-                <FontAwesomeIcon
-                  className="switch"
-                  icon="square"
-                  onClick={() => updateColor(-1)}
-                  color={color}
                 />
               </div>
               <input
@@ -84,6 +71,25 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
+
+            {iconSelecting && (
+              <div className="marker-select-icon">
+                {Icons.map((selectableIcon) => (
+                  <div key={selectableIcon}>
+                    <MapIcon
+                      className={`cursor-pointer ${
+                        icon === selectableIcon ? "drop-shadow-highlight" : ""
+                      }`}
+                      icon={selectableIcon}
+                      onClick={() => {
+                        setIcon(selectableIcon);
+                        setIconSelecting(false);
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
 
             <div className="marker-checkbox-container">
               <div className="marker-checkbox">
@@ -113,12 +119,26 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
               <div className="marker-popup-coords">
                 <div>
                   Radius:
-                  <br />
-                  <input
-                    type="number"
-                    defaultValue={marker.radius}
-                    onChange={(e) => updateRadius(e.target.valueAsNumber)}
-                  />
+                  <div className="marker-popup-coords-input">
+                    <input
+                      type="number"
+                      defaultValue={marker.radius}
+                      onChange={(e) => updateRadius(e.target.valueAsNumber)}
+                    />
+                    <div>
+                      <FontAwesomeIcon
+                        className="cursor-pointer"
+                        icon="caret-left"
+                        onClick={() => updateColor(-1)}
+                      />
+                      <MapIcon icon="square" color={color} />
+                      <FontAwesomeIcon
+                        className="cursor-pointer"
+                        icon="caret-right"
+                        onClick={() => updateColor(1)}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
