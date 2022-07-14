@@ -29,6 +29,7 @@ export const Icons: string[] = [
   "icon-treasure",
   "icon-magic",
   "icon-bow",
+  "icon-cave",
 ];
 export const iconSize = 30;
 
