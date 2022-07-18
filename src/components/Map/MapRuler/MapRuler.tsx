@@ -1,4 +1,3 @@
-import "./MapRuler.scss";
 import { useContext, useState } from "react";
 import {
   Polyline,
@@ -68,14 +67,14 @@ export const MapRuler: React.FC = () => {
       <RulerControl />
 
       <Polyline
-        className="map-ruler-shadow"
+        className="stroke-white"
         positions={positions}
         dashArray={[8, 4]}
         weight={6}
         lineCap="square"
       />
       <Polyline
-        className="map-ruler"
+        className="stroke-neutral-800"
         positions={positions}
         dashArray={[8, 4]}
         weight={4}
@@ -84,7 +83,7 @@ export const MapRuler: React.FC = () => {
 
       {positions.map((point, i) => (
         <CircleMarker
-          className="map-ruler-point"
+          className="stroke-neutral-800 fill-white"
           key={i}
           center={point}
           radius={3}

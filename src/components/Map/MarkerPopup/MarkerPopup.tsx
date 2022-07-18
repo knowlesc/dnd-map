@@ -1,4 +1,3 @@
-import "./MarkerPopup.scss";
 import * as React from "react";
 import { Popup } from "react-leaflet";
 import { MarkerContext } from "../../../contexts/MarkerContext";
@@ -48,9 +47,9 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
 
   return (
     <Popup className="marker-popup" minWidth={150}>
-      <div className="marker-popup-body">
+      <div className="mt-5 mb-4">
         {!canEditMarkers && (
-          <div className="marker-popup-readonly">
+          <div className="marker-popup-readonly text-sm">
             <strong>{marker.name}</strong>
             <div className="marker-notes">{marker.notes}</div>
           </div>
@@ -58,14 +57,15 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
 
         {canEditMarkers && (
           <>
-            <div className="marker-details">
-              <div className="marker-select">
+            <div className="flex items-center">
+              <div className="cursor-pointer mr-2">
                 <MapIcon
                   onClick={() => setIconSelecting((s) => !s)}
                   icon={icon as IconProp}
                 />
               </div>
               <input
+                className="w-full"
                 type="text"
                 defaultValue={marker.name}
                 onChange={(e) => setName(e.target.value)}
@@ -73,11 +73,11 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
             </div>
 
             {iconSelecting && (
-              <div className="marker-select-icon">
+              <div className="grid grid-cols-5 mt-2">
                 {Icons.map((selectableIcon) => (
-                  <div key={selectableIcon}>
+                  <div key={selectableIcon} className="text-center">
                     <MapIcon
-                      className={`cursor-pointer ${
+                      className={`inline-block cursor-pointer ${
                         icon === selectableIcon ? "drop-shadow-highlight" : ""
                       }`}
                       icon={selectableIcon}
@@ -91,8 +91,8 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
               </div>
             )}
 
-            <div className="marker-checkbox-container">
-              <div className="marker-checkbox">
+            <div className="flex justify-between pr-2">
+              <div className="font-semibold mt-2 text-sm">
                 <label>
                   <input
                     type="checkbox"
@@ -103,7 +103,7 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
                 </label>
               </div>
 
-              <div className="marker-checkbox">
+              <div className="font-semibold mt-2 text-sm">
                 <label>
                   <input
                     type="checkbox"
@@ -116,43 +116,43 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
             </div>
 
             {circle && (
-              <div className="marker-popup-coords">
-                <div>
-                  Radius:
-                  <div className="marker-popup-coords-input">
-                    <input
-                      type="number"
-                      defaultValue={marker.radius}
-                      onChange={(e) => updateRadius(e.target.valueAsNumber)}
+              <div className="mt-1 mb-4">
+                <div>Radius:</div>
+                <div className="marker-popup-coords-input w-full flex">
+                  <input
+                    className="basis-1/2 w-full"
+                    type="number"
+                    defaultValue={marker.radius}
+                    onChange={(e) => updateRadius(e.target.valueAsNumber)}
+                  />
+                  <div className="basis-1/2 flex justify-around items-center text-2xl">
+                    <FontAwesomeIcon
+                      className="cursor-pointer"
+                      icon="caret-left"
+                      onClick={() => updateColor(-1)}
                     />
-                    <div>
-                      <FontAwesomeIcon
-                        className="cursor-pointer"
-                        icon="caret-left"
-                        onClick={() => updateColor(-1)}
-                      />
-                      <MapIcon icon="square" color={color} />
-                      <FontAwesomeIcon
-                        className="cursor-pointer"
-                        icon="caret-right"
-                        onClick={() => updateColor(1)}
-                      />
-                    </div>
+                    <MapIcon icon="square" color={color} />
+                    <FontAwesomeIcon
+                      className="cursor-pointer"
+                      icon="caret-right"
+                      onClick={() => updateColor(1)}
+                    />
                   </div>
                 </div>
               </div>
             )}
 
-            <div className="marker-notes">
+            <div className="whitespace-pre-line mt-3">
               <textarea
+                className="resize-none"
                 placeholder="Notes"
                 defaultValue={marker.notes}
                 onChange={(e) => setNotes(e.target.value)}
               ></textarea>
             </div>
 
-            <div className="marker-buttons">
-              <Button className="action sm" onClick={save}>
+            <div className="whitespace-nowrap flex justify-end mt-3">
+              <Button className="action sm mr-2" onClick={save}>
                 save
               </Button>
               <Button className="warn sm" onClick={() => removeMarker(marker)}>

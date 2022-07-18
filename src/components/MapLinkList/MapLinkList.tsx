@@ -1,4 +1,3 @@
-import "./MapLinkList.scss";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -10,17 +9,18 @@ type Props = {
 
 export const MapLinkList: React.FC<Props> = ({ onClick }) => {
   return (
-    <div className="map-link-list">
+    <div className="grid grid-cols-[auto_max-content_auto] text-4xl font-semibold">
       <div></div>
       <div>
         {mapConfig.map(({ mapName, displayName }) => (
           <Link
             key={mapName}
             to={`/${mapName}`}
-            className="map-link"
+            className="map-link my-7 block px-10 text-neutral-200 no-underline"
             onClick={onClick}
           >
-            <FontAwesomeIcon icon="map-location-dot" /> {displayName}
+            <FontAwesomeIcon icon="map-location-dot" className="mr-3" />{" "}
+            {displayName}
           </Link>
         ))}
       </div>

@@ -1,8 +1,0 @@
-@import "./variables.scss";
-
-// utility classes
-// TODO maybe tailwind instead
-
-.drop-shadow-highlight {
-  filter: drop-shadow(0 0 3px $color-action);
-}

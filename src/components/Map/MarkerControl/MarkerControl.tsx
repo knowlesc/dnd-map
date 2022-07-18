@@ -1,4 +1,3 @@
-import "./MarkerControl.scss";
 import * as React from "react";
 import { useMap } from "react-leaflet";
 import { MarkerContext } from "../../../contexts/MarkerContext";
@@ -19,34 +18,32 @@ export const MarkerControl: React.FC = () => {
   return (
     <div className="leaflet-bottom leaflet-right">
       <div className="leaflet-control">
-        <div className="marker-control">
-          <Button
-            className="add-marker"
-            onClick={() => {
-              const center = map.getCenter();
-              const marker: IMarker = {
-                creator: name,
-                id: uuid.v4(),
-                lat: center.lat,
-                lng: center.lng,
-                name: "New Marker",
-                color: Colors[0],
-                icon: "icon-marker",
-                dmOnly: true,
-                radius: 0,
-                notes: "",
-                circle: false,
-              };
-              addMarker(marker);
-            }}
-          >
-            <FontAwesomeIcon
-              icon="map-marker-alt"
-              style={{ marginRight: "10px" }}
-            />
-            New Marker
-          </Button>
-        </div>
+        <Button
+          className="add-marker mb-5"
+          onClick={() => {
+            const center = map.getCenter();
+            const marker: IMarker = {
+              creator: name,
+              id: uuid.v4(),
+              lat: center.lat,
+              lng: center.lng,
+              name: "New Marker",
+              color: Colors[0],
+              icon: "icon-marker",
+              dmOnly: true,
+              radius: 0,
+              notes: "",
+              circle: false,
+            };
+            addMarker(marker);
+          }}
+        >
+          <FontAwesomeIcon
+            icon="map-marker-alt"
+            style={{ marginRight: "10px" }}
+          />
+          New Marker
+        </Button>
       </div>
     </div>
   );

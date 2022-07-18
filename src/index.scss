@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 @import "./variables.scss";
-@import "./util.scss";
+@import "./lib/leaflet-overrides.scss";
 
 *,
 *:before,
