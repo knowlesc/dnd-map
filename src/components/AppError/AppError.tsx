@@ -1,8 +1,7 @@
-import "./AppError.scss";
 import * as React from "react";
 
 export const AppError: React.FC<{ error: string }> = ({ error }) => {
-  return <main className="app-error">{error}</main>;
+  return <main className="px-24 py-12 font-bold">{error}</main>;
 };
 
 export default AppError;

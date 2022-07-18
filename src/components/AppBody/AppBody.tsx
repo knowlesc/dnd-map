@@ -1,4 +1,3 @@
-import "./AppBody.scss";
 import * as React from "react";
 import { MapBody } from "../Map/MapBody/MapBody";
 

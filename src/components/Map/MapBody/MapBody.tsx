@@ -1,4 +1,3 @@
-import "./MapBody.scss";
 import * as React from "react";
 import { MapContainer } from "react-leaflet";
 import { CRS } from "leaflet";
@@ -17,7 +16,7 @@ export const MapBody: React.FC = () => {
 
   return (
     <MapContainer
-      className="map-container"
+      className="bg-table-wood bg-cover"
       wheelPxPerZoomLevel={150}
       bounds={[
         [0, 0],

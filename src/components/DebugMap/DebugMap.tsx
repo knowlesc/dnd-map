@@ -1,4 +1,3 @@
-import "./DebugMap.scss";
 import * as React from "react";
 import { useMap } from "react-leaflet";
 import { LatLngBounds } from "leaflet";
@@ -20,7 +19,7 @@ export const DebugMap: React.FC = () => {
 
   map.getSize();
   return (
-    <div className="debug-map">
+    <div className="absolute left-0 bottom-0 h-40 w-80 bg-white z-1000">
       <div>Bounds: {JSON.stringify(bounds)}</div>
       <div>Zoom: {zoom}</div>
       <div>Bounds Zoom: {map.getBoundsZoom(sizeBounds)}</div>

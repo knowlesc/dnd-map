@@ -1,4 +1,3 @@
-import "./LoginButtons.scss";
 import * as React from "react";
 import { SignInContext } from "../../contexts/SignInContext";
 import Button from "../Button/Button";

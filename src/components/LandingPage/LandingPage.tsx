@@ -1,4 +1,3 @@
-import "./LandingPage.scss";
 import React, { useContext } from "react";
 import { SignInContext } from "../../contexts/SignInContext";
 import AppHeader from "../AppHeader/AppHeader";
@@ -18,7 +17,7 @@ export const LandingPage: React.FC = () => {
   return (
     <>
       <AppHeader />
-      <main className="app-body app-body-background landing-page">
+      <main className="app-body bg-table-wood pt-10 bg-cover">
         <MapLinkList />
       </main>
     </>
