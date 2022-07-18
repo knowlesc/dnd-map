@@ -1,4 +1,3 @@
-import "./MapCursor.scss";
 import * as React from "react";
 import { Marker } from "react-leaflet";
 import { divIcon } from "leaflet";
@@ -9,6 +8,7 @@ export const MapCursor: React.FC<{
   p: IPosition;
 }> = ({ p }) => {
   const markerRef = React.useRef<any>(null);
+  console.log(p.role);
 
   return (
     <Marker
@@ -17,14 +17,21 @@ export const MapCursor: React.FC<{
       icon={divIcon({
         iconSize: [32, 32],
         iconAnchor: [16, 16],
-        className: `map-marker map-cursor ${
-          p.role === "dm" ? "primary" : "secondary"
-        }`,
+        className:
+          "map-marker map-cursor transition-all duration-700 no-transition-on-zoom",
         html: renderToString(
-          <>
+          <div
+            className={`${
+              p.role === "dm"
+                ? "drop-shadow-icon-big-gold"
+                : "drop-shadow-icon-big"
+            }`}
+          >
             <i className="fas fa-mouse-pointer map-cursor-icon" />
-            <span className="map-marker-name">{p.name}</span>
-          </>
+            <span className="text-xs text-center font-bold font-fancy">
+              {p.name}
+            </span>
+          </div>
         ),
       })}
     ></Marker>

@@ -1,0 +1,35 @@
+// TODO is there an easy way to do this with tailwind?
+$marker-highlight-color: #d4f4fb;
+$marker-highlight-color-gold: #e1be2c;
+
+// TODO tailwind can't do this for some reason
+.fill-30 {
+  fill-opacity: 0.3;
+}
+
+.drop-shadow-icon-small {
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
+}
+
+.drop-shadow-icon-big-gold {
+  filter: drop-shadow(0 0 1px $marker-highlight-color-gold)
+    drop-shadow(0 0 1px $marker-highlight-color-gold)
+    drop-shadow(0 0 1px $marker-highlight-color-gold)
+    drop-shadow(0 0 2px $marker-highlight-color-gold);
+}
+
+.drop-shadow-icon-big {
+  filter: drop-shadow(0 0 1px $marker-highlight-color)
+    drop-shadow(0 0 1px $marker-highlight-color)
+    drop-shadow(0 0 1px $marker-highlight-color)
+    drop-shadow(0 0 2px $marker-highlight-color);
+}
+
+.drop-shadow-text-big {
+  text-shadow: 0 0 3px $marker-highlight-color, 0 0 3px $marker-highlight-color,
+    0 0 3px $marker-highlight-color, 0 0 3px $marker-highlight-color,
+    0 0 3px $marker-highlight-color, 0 0 3px $marker-highlight-color,
+    0 0 3px $marker-highlight-color, 0 0 3px $marker-highlight-color,
+    0 0 3px $marker-highlight-color, 0 0 3px $marker-highlight-color,
+    0 0 3px $marker-highlight-color, 2px 2px 8px #000000;
+}

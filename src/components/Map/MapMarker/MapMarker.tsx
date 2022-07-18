@@ -1,4 +1,3 @@
-import "./MapMarker.scss";
 import * as React from "react";
 import { Circle, Marker } from "react-leaflet";
 import { MarkerContext } from "../../../contexts/MarkerContext";
@@ -33,11 +32,14 @@ export const MapMarker = ({ marker }: Props) => {
       position={[marker.lat, marker.lng]}
       draggable={canEditMarkers}
       eventHandlers={{
+        // TODO better way to do this?
         mouseover: () => {
-          circleRef.current?.getElement()?.classList.add("hover");
+          circleRef.current?.getElement()?.classList.add("stroke-4", "fill-30");
         },
         mouseout: () => {
-          circleRef.current?.getElement()?.classList.remove("hover");
+          circleRef.current
+            ?.getElement()
+            ?.classList.remove("stroke-4", "fill-30");
         },
         dragend: () => {
           if (!markerRef.current) return;
@@ -49,18 +51,20 @@ export const MapMarker = ({ marker }: Props) => {
         iconSize: [iconSize, iconSize],
         iconAnchor: [Math.round(iconSize / 2), iconSize],
         popupAnchor: [0, -iconSize],
-        className: "map-marker",
+        className: "font-fancy group",
         html: renderToString(
           <>
             <MapIcon
               icon={marker.icon}
               style={{ color: marker.color, fontSize: iconSize }}
-              className="map-marker-icon"
+              className="drop-shadow-icon-big"
             />
-            <span className="map-marker-name">
-              {marker.dmOnly && (
-                <i className="fas fa-lock map-marker-private" />
-              )}
+            <span
+              className="group-hover:text-sm inline-block drop-shadow-icon-big text-xs text-center font-bold transition-all"
+              // TODO not sure if there's a more "natural" way to do this
+              style={{ width: "140px", marginLeft: "-55px" }}
+            >
+              {marker.dmOnly && <i className="fas fa-lock mr-1" />}
               {marker.name.length < truncateAfterChars
                 ? marker.name
                 : marker.name.slice(0, truncateAfterChars - 3) + "..."}
@@ -71,7 +75,7 @@ export const MapMarker = ({ marker }: Props) => {
     >
       {marker.circle && (
         <Circle
-          className="map-marker-circle"
+          className="map-marker-circle transition-all"
           ref={circleRef}
           key={marker.id}
           center={[marker.lat, marker.lng]}

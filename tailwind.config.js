@@ -14,6 +14,12 @@ module.exports = {
       dropShadow: {
         highlight: "0 0 3px rgba(0, 0, 0, 1)",
       },
+      fontFamily: {
+        fancy: ["Andada Pro", "serif"],
+      },
+      strokeWidth: {
+        4: "4px",
+      },
     },
   },
   plugins: [],

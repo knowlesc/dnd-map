@@ -1,0 +1,6 @@
+// Stops cursors from going nuts while the map is zooming
+.zooming {
+  .no-transition-on-zoom {
+    transition: none;
+  }
+}
