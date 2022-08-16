@@ -1,6 +1,6 @@
 # D&D Map
 
-Map browser for D&D using react-leaflet, with firebase realtime database integration. Shows location of mouse cursors on the map for anyone currently logged in.
+Map browser for D&D using react-leaflet, with firebase realtime database integration. Shows location of mouse cursors on the map for anyone currently logged in. Includes a ruler to measure distance along a set of points.
 
 <img src="example2.webp" height="400">
 <img src="example1.webp" height="400">
