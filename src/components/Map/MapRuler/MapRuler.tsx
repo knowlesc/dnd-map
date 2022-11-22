@@ -29,7 +29,7 @@ function calculateDistance(
   return distance;
 }
 
-export const MapRuler: React.FC = () => {
+export function MapRuler() {
   const [mousePosition, setMousePosition] = useState<LatLng | null>(null);
   const [showMouse, setShowMouse] = useState(true);
   const { addPoint, rulerPoints, rulerMode } = useContext(RulerContext);
@@ -98,4 +98,4 @@ export const MapRuler: React.FC = () => {
       ))}
     </>
   );
-};
+}

@@ -20,7 +20,7 @@ export const SignInContext = createContext<SignInContextValue>(
   {} as SignInContextValue
 );
 
-export const SignInProvider: React.FC = ({ children }) => {
+export function SignInProvider({ children }: React.PropsWithChildren<{}>) {
   const [googleAccount, setGoogleAccount] = useState<FirebaseUser | null>(null);
   const [app, setApp] = useState<FirebaseApp | null>(null);
 
@@ -59,4 +59,4 @@ export const SignInProvider: React.FC = ({ children }) => {
       {children}
     </SignInContext.Provider>
   );
-};
+}

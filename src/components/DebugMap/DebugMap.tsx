@@ -3,7 +3,7 @@ import { useMap } from "react-leaflet";
 import { LatLngBounds } from "leaflet";
 import { ImageContext } from "../../contexts/ImageContext";
 
-export const DebugMap: React.FC = () => {
+export function DebugMap() {
   const map = useMap();
   const { sizeX, sizeY } = React.useContext(ImageContext);
   const [zoom, setZoom] = React.useState(map.getZoom());
@@ -25,4 +25,4 @@ export const DebugMap: React.FC = () => {
       <div>Bounds Zoom: {map.getBoundsZoom(sizeBounds)}</div>
     </div>
   );
-};
+}

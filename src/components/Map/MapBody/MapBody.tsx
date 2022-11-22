@@ -10,7 +10,7 @@ import { DEBUG } from "../../../config/debugConfig";
 import { DebugMap } from "../../DebugMap/DebugMap";
 import { ImageContext } from "../../../contexts/ImageContext";
 
-export const MapBody: React.FC = () => {
+export function MapBody() {
   const { canEditMarkers } = React.useContext(UserContext);
   const { sizeX, sizeY } = React.useContext(ImageContext);
 
@@ -41,4 +41,4 @@ export const MapBody: React.FC = () => {
       {DEBUG && <DebugMap />}
     </MapContainer>
   );
-};
+}

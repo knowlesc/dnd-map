@@ -4,7 +4,7 @@ import { AppHeader } from "../AppHeader/AppHeader";
 import { NotLoggedIn } from "../NotLoggedIn/NotLoggedIn";
 import { MapLinkList } from "../MapLinkList/MapLinkList";
 
-export const LandingPage: React.FC = () => {
+export function LandingPage() {
   const { googleAccount } = useContext(SignInContext);
   if (!googleAccount)
     return (
@@ -22,4 +22,4 @@ export const LandingPage: React.FC = () => {
       </main>
     </>
   );
-};
+}

@@ -4,7 +4,7 @@ import { MapContext } from "../../contexts/MapContext";
 import { SignInContext } from "../../contexts/SignInContext";
 import { MapLinkList } from "../MapLinkList/MapLinkList";
 
-export const AppLogo: React.FC = () => {
+export function AppLogo() {
   const [opened, setOpened] = useState(false);
   const { displayName } = useContext(MapContext);
   const { googleAccount } = useContext(SignInContext);
@@ -35,4 +35,4 @@ export const AppLogo: React.FC = () => {
       </div>
     </>
   );
-};
+}

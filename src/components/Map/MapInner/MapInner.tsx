@@ -11,7 +11,7 @@ import { ImageContext } from "../../../contexts/ImageContext";
 import { RulerProvider } from "../../../contexts/RulerContext";
 import { MapRuler } from "../MapRuler/MapRuler";
 
-export const MapInner: React.FC = () => {
+export function MapInner() {
   const { markers } = React.useContext(MarkerContext);
   const { imageUrl, sizeX, sizeY, loading } = React.useContext(ImageContext);
 
@@ -52,4 +52,4 @@ export const MapInner: React.FC = () => {
       </ImageOverlay>
     </>
   );
-};
+}

@@ -19,7 +19,7 @@ export const UserContext = createContext<UserContextValue>(
   {} as UserContextValue
 );
 
-export const UserProvider: React.FC = ({ children }) => {
+export function UserProvider({ children }: React.PropsWithChildren<{}>) {
   const { googleAccount } = useContext(SignInContext);
   const [user, setUser] = useState<IUser | null>(null);
   const [users, setUsers] = useState<Record<string, IUserInfo> | null>(null);
@@ -77,4 +77,4 @@ export const UserProvider: React.FC = ({ children }) => {
       {children}
     </UserContext.Provider>
   );
-};
+}

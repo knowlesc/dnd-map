@@ -18,7 +18,7 @@ const CursorMemo = React.memo(
   }
 );
 
-export const MousePositions: React.FC = () => {
+export function MousePositions() {
   const { positions } = React.useContext(PositionContext);
 
   return (
@@ -28,4 +28,4 @@ export const MousePositions: React.FC = () => {
       ))}
     </>
   );
-};
+}

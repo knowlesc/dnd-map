@@ -8,7 +8,7 @@ import { Colors } from "../../../constants/Colors";
 import { Button } from "../../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const MarkerControl: React.FC = () => {
+export function MarkerControl() {
   const map = useMap();
   const { addMarker } = React.useContext(MarkerContext);
   const {
@@ -47,4 +47,4 @@ export const MarkerControl: React.FC = () => {
       </div>
     </div>
   );
-};
+}

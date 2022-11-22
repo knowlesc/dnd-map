@@ -3,7 +3,7 @@ import { RulerContext } from "../../../contexts/RulerContext";
 import { Button } from "../../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const RulerControl: React.FC = () => {
+export function RulerControl() {
   const { startRuler, stopRuler, rulerMode } = useContext(RulerContext);
 
   return (
@@ -21,4 +21,4 @@ export const RulerControl: React.FC = () => {
       </div>
     </div>
   );
-};
+}

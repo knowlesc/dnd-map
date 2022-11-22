@@ -1,10 +1,10 @@
 import * as React from "react";
 import { MapBody } from "../Map/MapBody/MapBody";
 
-export const AppBody: React.FC = () => {
+export function AppBody() {
   return (
     <main className="app-body">
       <MapBody />
     </main>
   );
-};
+}

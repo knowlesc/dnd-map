@@ -14,7 +14,7 @@ export const MarkerContext = createContext<MarkerContextValue>(
   {} as MarkerContextValue
 );
 
-export const MarkerProvider: React.FC = ({ children }) => {
+export function MarkerProvider({ children }: React.PropsWithChildren<{}>) {
   const { canEditMarkers } = useContext(UserContext);
   const { savedMarkers, deleteMarker, updateMarker, createMarker } =
     useContext(SaveContext);
@@ -57,4 +57,4 @@ export const MarkerProvider: React.FC = ({ children }) => {
       {children}
     </MarkerContext.Provider>
   );
-};
+}

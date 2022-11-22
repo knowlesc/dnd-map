@@ -5,7 +5,7 @@ import { mapConfig } from "../config/mapConfig";
 import { LandingPage } from "./LandingPage/LandingPage";
 import { SignInProvider } from "../contexts/SignInContext";
 
-export const App: React.FC = () => {
+export function App() {
   return (
     <SignInProvider>
       <Routes>
@@ -20,4 +20,4 @@ export const App: React.FC = () => {
       </Routes>
     </SignInProvider>
   );
-};
+}

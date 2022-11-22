@@ -25,7 +25,7 @@ export const SaveContext = createContext<SaveContextValue>(
   {} as SaveContextValue
 );
 
-export const SaveProvider: React.FC = ({ children }) => {
+export function SaveProvider({ children }: React.PropsWithChildren<{}>) {
   const { mapName } = useContext(MapContext);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -126,4 +126,4 @@ export const SaveProvider: React.FC = ({ children }) => {
       {children}
     </SaveContext.Provider>
   );
-};
+}

@@ -16,7 +16,7 @@ export const ImageContext = createContext<ImageContextValue>(
   {} as ImageContextValue
 );
 
-export const ImageProvider: React.FC = ({ children }) => {
+export function ImageProvider({ children }: React.PropsWithChildren<{}>) {
   const [metadata, setMetadata] = useState<ImageMetadata | null>();
   const [loading, setLoading] = useState(true);
   const { mapName } = useContext(MapContext);
@@ -57,4 +57,4 @@ export const ImageProvider: React.FC = ({ children }) => {
       {children}
     </ImageContext.Provider>
   );
-};
+}

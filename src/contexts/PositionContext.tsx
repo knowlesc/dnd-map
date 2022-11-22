@@ -10,7 +10,7 @@ export const PositionContext = createContext<PositionContextValue>(
   {} as PositionContextValue
 );
 
-export const PositionProvider: React.FC = ({ children }) => {
+export function PositionProvider({ children }: React.PropsWithChildren<{}>) {
   const [positions, setPositions] = useState<IPosition[]>([]);
 
   return (
@@ -23,4 +23,4 @@ export const PositionProvider: React.FC = ({ children }) => {
       {children}
     </PositionContext.Provider>
   );
-};
+}

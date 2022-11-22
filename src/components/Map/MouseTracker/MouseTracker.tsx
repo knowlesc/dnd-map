@@ -11,7 +11,7 @@ import {
   serializePosition,
 } from "../../../types/IPosition";
 
-export const MouseTracker: React.FC = () => {
+export function MouseTracker() {
   const [position, setPosition] = React.useState<LatLngTuple | null>(null);
   const { user, users } = React.useContext(UserContext);
   const { mapName } = React.useContext(MapContext);
@@ -80,4 +80,4 @@ export const MouseTracker: React.FC = () => {
   });
 
   return <></>;
-};
+}

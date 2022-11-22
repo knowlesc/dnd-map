@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { SaveContext } from "../../../contexts/SaveContext";
 
-export const SaveIndicator: React.FC = () => {
+export function SaveIndicator() {
   const { saveError } = useContext(SaveContext);
 
   return (
@@ -17,4 +17,4 @@ export const SaveIndicator: React.FC = () => {
       </div>
     </div>
   );
-};
+}

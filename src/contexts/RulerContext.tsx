@@ -20,7 +20,7 @@ export const RulerContext = createContext<RulerContextValue>(
   {} as RulerContextValue
 );
 
-export const RulerProvider: React.FC = ({ children }) => {
+export function RulerProvider({ children }: React.PropsWithChildren<{}>) {
   const [rulerMode, setRulerMode] = useState(false);
   const [rulerPoints, setRulerPoints] = useState<LatLng[]>([]);
   const { mapName } = useContext(MapContext);
@@ -58,4 +58,4 @@ export const RulerProvider: React.FC = ({ children }) => {
       {children}
     </RulerContext.Provider>
   );
-};
+}
