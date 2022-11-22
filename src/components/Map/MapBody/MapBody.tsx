@@ -1,13 +1,13 @@
 import * as React from "react";
 import { MapContainer } from "react-leaflet";
 import { CRS } from "leaflet";
-import MapInner from "../MapInner/MapInner";
+import { MapInner } from "../MapInner/MapInner";
 import { MarkerControl } from "../MarkerControl/MarkerControl";
 import { SaveIndicator } from "../SaveIndicator/SaveIndicator";
 import { UserContext } from "../../../contexts/UserContext";
 import { DEFAULT_ZOOM, MAX_ZOOM, MIN_ZOOM } from "../../../constants/Map";
 import { DEBUG } from "../../../config/debugConfig";
-import DebugMap from "../../DebugMap/DebugMap";
+import { DebugMap } from "../../DebugMap/DebugMap";
 import { ImageContext } from "../../../contexts/ImageContext";
 
 export const MapBody: React.FC = () => {
@@ -42,5 +42,3 @@ export const MapBody: React.FC = () => {
     </MapContainer>
   );
 };
-
-export default MapContainer;

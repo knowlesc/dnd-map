@@ -81,5 +81,3 @@ export const MouseTracker: React.FC = () => {
 
   return <></>;
 };
-
-export default MouseTracker;

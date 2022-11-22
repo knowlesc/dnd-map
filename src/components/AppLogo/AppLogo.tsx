@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MapContext } from "../../contexts/MapContext";
 import { SignInContext } from "../../contexts/SignInContext";
-import MapLinkList from "../MapLinkList/MapLinkList";
+import { MapLinkList } from "../MapLinkList/MapLinkList";
 
 export const AppLogo: React.FC = () => {
   const [opened, setOpened] = useState(false);
@@ -36,5 +36,3 @@ export const AppLogo: React.FC = () => {
     </>
   );
 };
-
-export default AppLogo;

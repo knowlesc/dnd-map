@@ -6,5 +6,3 @@ export const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
 ) => {
   return <button {...props} />;
 };
-
-export default Button;

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SignInContext } from "../../contexts/SignInContext";
-import Button from "../Button/Button";
+import { Button } from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const LoginButtons: React.FC = () => {
@@ -23,5 +23,3 @@ export const LoginButtons: React.FC = () => {
     </div>
   );
 };
-
-export default LoginButtons;

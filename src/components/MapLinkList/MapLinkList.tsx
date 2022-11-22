@@ -28,5 +28,3 @@ export const MapLinkList: React.FC<Props> = ({ onClick }) => {
     </div>
   );
 };
-
-export default MapLinkList;

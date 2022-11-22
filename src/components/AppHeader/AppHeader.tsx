@@ -1,6 +1,6 @@
 import * as React from "react";
-import LoginButtons from "../LoginButtons/LoginButtons";
-import AppLogo from "../AppLogo/AppLogo";
+import { LoginButtons } from "../LoginButtons/LoginButtons";
+import { AppLogo } from "../AppLogo/AppLogo";
 
 export const AppHeader: React.FC = () => {
   return (
@@ -10,5 +10,3 @@ export const AppHeader: React.FC = () => {
     </header>
   );
 };
-
-export default AppHeader;

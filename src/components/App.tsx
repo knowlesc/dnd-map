@@ -1,8 +1,8 @@
 import * as React from "react";
-import AppContext from "./AppContext/AppContext";
+import { AppContext } from "./AppContext/AppContext";
 import { Route, Routes } from "react-router";
 import { mapConfig } from "../config/mapConfig";
-import LandingPage from "./LandingPage/LandingPage";
+import { LandingPage } from "./LandingPage/LandingPage";
 import { SignInProvider } from "../contexts/SignInContext";
 
 export const App: React.FC = () => {
@@ -21,5 +21,3 @@ export const App: React.FC = () => {
     </SignInProvider>
   );
 };
-
-export default App;

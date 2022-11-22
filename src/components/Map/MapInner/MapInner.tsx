@@ -1,11 +1,11 @@
 import * as React from "react";
 import { ImageOverlay, useMap } from "react-leaflet";
 import { ImageOverlay as LeafletImageOverlay, LatLngBounds } from "leaflet";
-import MapMarker from "../MapMarker/MapMarker";
+import { MapMarker } from "../MapMarker/MapMarker";
 import { MarkerContext } from "../../../contexts/MarkerContext";
 import { PositionProvider } from "../../../contexts/PositionContext";
-import MouseTracker from "../MouseTracker/MouseTracker";
-import MousePositions from "../MousePositions/MousePositions";
+import { MouseTracker } from "../MouseTracker/MouseTracker";
+import { MousePositions } from "../MousePositions/MousePositions";
 import { DEFAULT_ZOOM } from "../../../constants/Map";
 import { ImageContext } from "../../../contexts/ImageContext";
 import { RulerProvider } from "../../../contexts/RulerContext";
@@ -53,5 +53,3 @@ export const MapInner: React.FC = () => {
     </>
   );
 };
-
-export default MapInner;

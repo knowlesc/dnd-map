@@ -5,7 +5,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { Colors } from "../../../constants/Colors";
-import Button from "../../Button/Button";
+import { Button } from "../../Button/Button";
 import { Icons, MapIcon } from "../MapIcon/MapIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -165,5 +165,3 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
     </Popup>
   );
 };
-
-export default MarkerPopup;

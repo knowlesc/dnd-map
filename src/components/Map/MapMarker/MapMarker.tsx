@@ -7,7 +7,7 @@ import {
   Marker as LeafletMarker,
 } from "leaflet";
 import { renderToString } from "react-dom/server";
-import MarkerPopup from "../MarkerPopup/MarkerPopup";
+import { MarkerPopup } from "../MarkerPopup/MarkerPopup";
 import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { iconSize, MapIcon } from "../MapIcon/MapIcon";
@@ -93,5 +93,3 @@ export const MapMarker = ({ marker }: Props) => {
     </Marker>
   );
 };
-
-export default MapMarker;

@@ -26,5 +26,3 @@ export const DebugMap: React.FC = () => {
     </div>
   );
 };
-
-export default DebugMap;

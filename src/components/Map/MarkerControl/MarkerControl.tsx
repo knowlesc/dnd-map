@@ -5,7 +5,7 @@ import * as uuid from "uuid";
 import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { Colors } from "../../../constants/Colors";
-import Button from "../../Button/Button";
+import { Button } from "../../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const MarkerControl: React.FC = () => {

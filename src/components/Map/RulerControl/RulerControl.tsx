@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { RulerContext } from "../../../contexts/RulerContext";
-import Button from "../../Button/Button";
+import { Button } from "../../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const RulerControl: React.FC = () => {

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { PositionContext } from "../../../contexts/PositionContext";
 import { IPosition } from "../../../types/IPosition";
-import MapCursor from "../MapCursor/MapCursor";
+import { MapCursor } from "../MapCursor/MapCursor";
 
 const CursorMemo = React.memo(
   function CursorMemo({ p }: { p: IPosition }) {
@@ -29,5 +29,3 @@ export const MousePositions: React.FC = () => {
     </>
   );
 };
-
-export default MousePositions;

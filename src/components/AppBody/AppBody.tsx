@@ -8,5 +8,3 @@ export const AppBody: React.FC = () => {
     </main>
   );
 };
-
-export default AppBody;
