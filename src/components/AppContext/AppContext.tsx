@@ -1,4 +1,3 @@
-import * as React from "react";
 import { MarkerProvider } from "../../contexts/MarkerContext";
 import { SaveProvider } from "../../contexts/SaveContext";
 import { UserProvider } from "../../contexts/UserContext";
@@ -11,7 +10,7 @@ interface AppConfig {
   mapName: string;
 }
 
-export const AppContext: React.FC<AppConfig> = ({ mapName }) => {
+export function AppContext({ mapName }: AppConfig) {
   return (
     <>
       <MapProvider mapName={mapName}>
@@ -28,4 +27,4 @@ export const AppContext: React.FC<AppConfig> = ({ mapName }) => {
       </MapProvider>
     </>
   );
-};
+}

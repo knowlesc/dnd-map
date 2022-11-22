@@ -1,14 +1,14 @@
-import * as React from "react";
 import { useMap } from "react-leaflet";
 import { LatLngBounds } from "leaflet";
 import { ImageContext } from "../../contexts/ImageContext";
+import { useContext, useEffect, useState } from "react";
 
 export function DebugMap() {
   const map = useMap();
-  const { sizeX, sizeY } = React.useContext(ImageContext);
-  const [zoom, setZoom] = React.useState(map.getZoom());
+  const { sizeX, sizeY } = useContext(ImageContext);
+  const [zoom, setZoom] = useState(map.getZoom());
 
-  React.useEffect(() => {
+  useEffect(() => {
     map.on("zoom", () => {
       setZoom(map.getZoom());
     });

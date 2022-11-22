@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Popup } from "react-leaflet";
 import { MarkerContext } from "../../../contexts/MarkerContext";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -8,6 +7,7 @@ import { Colors } from "../../../constants/Colors";
 import { Button } from "../../Button/Button";
 import { Icons, MapIcon } from "../MapIcon/MapIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext, useState, useCallback } from "react";
 
 function move(array: string[], current: string, amount: number) {
   const index = array.find((a) => a === current) ? array.indexOf(current) : -1;
@@ -19,29 +19,29 @@ function move(array: string[], current: string, amount: number) {
   return array[newIndex];
 }
 
-export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
-  const { canEditMarkers } = React.useContext(UserContext);
-  const { removeMarker, setMarker } = React.useContext(MarkerContext);
-  const [color, setColor] = React.useState(marker.color);
-  const [icon, setIcon] = React.useState(marker.icon);
-  const [iconSelecting, setIconSelecting] = React.useState(false);
-  const [name, setName] = React.useState(marker.name);
-  const [notes, setNotes] = React.useState(marker.notes ?? "");
-  const [dmOnly, setDmOnly] = React.useState(marker.dmOnly);
-  const [radius, setRadius] = React.useState(marker.radius);
-  const [circle, setCircle] = React.useState(marker.circle ?? false);
+export function MarkerPopup({ marker }: { marker: IMarker }) {
+  const { canEditMarkers } = useContext(UserContext);
+  const { removeMarker, setMarker } = useContext(MarkerContext);
+  const [color, setColor] = useState(marker.color);
+  const [icon, setIcon] = useState(marker.icon);
+  const [iconSelecting, setIconSelecting] = useState(false);
+  const [name, setName] = useState(marker.name);
+  const [notes, setNotes] = useState(marker.notes ?? "");
+  const [dmOnly, setDmOnly] = useState(marker.dmOnly);
+  const [radius, setRadius] = useState(marker.radius);
+  const [circle, setCircle] = useState(marker.circle ?? false);
 
-  const updateRadius = React.useCallback(
+  const updateRadius = useCallback(
     (value) => setRadius(Math.min(Math.max(value, 50), 1000)),
     [setRadius]
   );
 
-  const updateColor = React.useCallback(
+  const updateColor = useCallback(
     (add) => setColor(move(Colors, color, add)),
     [color]
   );
 
-  const save = React.useCallback(() => {
+  const save = useCallback(() => {
     setMarker({ ...marker, color, icon, name, dmOnly, notes, radius, circle });
   }, [setMarker, marker, color, icon, name, dmOnly, radius, notes, circle]);
 
@@ -164,4 +164,4 @@ export const MarkerPopup: React.FC<{ marker: IMarker }> = ({ marker }) => {
       </div>
     </Popup>
   );
-};
+}

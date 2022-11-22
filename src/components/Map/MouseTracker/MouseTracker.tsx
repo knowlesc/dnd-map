@@ -1,4 +1,3 @@
-import * as React from "react";
 import { getDatabase, onValue, ref, set } from "@firebase/database";
 import { LatLngTuple } from "leaflet";
 import { useMapEvent } from "react-leaflet";
@@ -10,14 +9,15 @@ import {
   deserializePosition,
   serializePosition,
 } from "../../../types/IPosition";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 export function MouseTracker() {
-  const [position, setPosition] = React.useState<LatLngTuple | null>(null);
-  const { user, users } = React.useContext(UserContext);
-  const { mapName } = React.useContext(MapContext);
-  const { setPositions } = React.useContext(PositionContext);
+  const [position, setPosition] = useState<LatLngTuple | null>(null);
+  const { user, users } = useContext(UserContext);
+  const { mapName } = useContext(MapContext);
+  const { setPositions } = useContext(PositionContext);
 
-  const updatePosition = React.useCallback(
+  const updatePosition = useCallback(
     (latlng: [number, number]) => {
       set(ref(getDatabase(), `/xy/${user.uid}`), {
         p: serializePosition({
@@ -37,7 +37,7 @@ export function MouseTracker() {
    * things like map markers extremely frequently, which will cause them to
    * fly all over the place when zooming in and out.
    */
-  React.useEffect(() => {
+  useEffect(() => {
     const cancel = onValue(
       ref(getDatabase(), "/xy"),
       (snapshot) => {

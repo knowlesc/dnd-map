@@ -1,9 +1,9 @@
-import * as React from "react";
+import { memo, useContext } from "react";
 import { PositionContext } from "../../../contexts/PositionContext";
 import { IPosition } from "../../../types/IPosition";
 import { MapCursor } from "../MapCursor/MapCursor";
 
-const CursorMemo = React.memo(
+const CursorMemo = memo(
   function CursorMemo({ p }: { p: IPosition }) {
     return <MapCursor p={p} />;
   },
@@ -19,7 +19,7 @@ const CursorMemo = React.memo(
 );
 
 export function MousePositions() {
-  const { positions } = React.useContext(PositionContext);
+  const { positions } = useContext(PositionContext);
 
   return (
     <>

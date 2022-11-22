@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MapContext } from "../../contexts/MapContext";
 import { SignInContext } from "../../contexts/SignInContext";

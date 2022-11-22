@@ -1,13 +1,13 @@
-import * as React from "react";
 import { Marker } from "react-leaflet";
 import { divIcon } from "leaflet";
 import { renderToString } from "react-dom/server";
 import { IPosition } from "../../../types/IPosition";
+import { useRef } from "react";
 
 export const MapCursor: React.FC<{
   p: IPosition;
 }> = ({ p }) => {
-  const markerRef = React.useRef<any>(null);
+  const markerRef = useRef<any>(null);
   console.log(p.role);
 
   return (

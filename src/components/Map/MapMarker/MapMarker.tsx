@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Circle, Marker } from "react-leaflet";
 import { MarkerContext } from "../../../contexts/MarkerContext";
 import {
@@ -11,18 +10,19 @@ import { MarkerPopup } from "../MarkerPopup/MarkerPopup";
 import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { iconSize, MapIcon } from "../MapIcon/MapIcon";
+import { useContext, useRef } from "react";
 
 const truncateAfterChars = 45;
 
 type Props = { marker: IMarker };
 
 export const MapMarker = ({ marker }: Props) => {
-  const { setMarker } = React.useContext(MarkerContext);
+  const { setMarker } = useContext(MarkerContext);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const markerRef = React.useRef<LeafletMarker<any>>(null);
+  const markerRef = useRef<LeafletMarker<any>>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const circleRef = React.useRef<LeafletCircle<any>>(null);
-  const { canEditMarkers } = React.useContext(UserContext);
+  const circleRef = useRef<LeafletCircle<any>>(null);
+  const { canEditMarkers } = useContext(UserContext);
 
   return (
     <Marker

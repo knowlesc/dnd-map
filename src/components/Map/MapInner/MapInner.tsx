@@ -1,4 +1,3 @@
-import * as React from "react";
 import { ImageOverlay, useMap } from "react-leaflet";
 import { ImageOverlay as LeafletImageOverlay, LatLngBounds } from "leaflet";
 import { MapMarker } from "../MapMarker/MapMarker";
@@ -10,15 +9,16 @@ import { DEFAULT_ZOOM } from "../../../constants/Map";
 import { ImageContext } from "../../../contexts/ImageContext";
 import { RulerProvider } from "../../../contexts/RulerContext";
 import { MapRuler } from "../MapRuler/MapRuler";
+import { useContext, useRef, useEffect } from "react";
 
 export function MapInner() {
-  const { markers } = React.useContext(MarkerContext);
-  const { imageUrl, sizeX, sizeY, loading } = React.useContext(ImageContext);
+  const { markers } = useContext(MarkerContext);
+  const { imageUrl, sizeX, sizeY, loading } = useContext(ImageContext);
 
   const map = useMap();
-  const ref = React.useRef<LeafletImageOverlay>(null);
+  const ref = useRef<LeafletImageOverlay>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!ref.current || loading) return;
     const newBounds = new LatLngBounds([0, 0], [sizeY, sizeX]);
     ref.current.setBounds(newBounds);

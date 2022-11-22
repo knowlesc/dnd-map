@@ -1,4 +1,3 @@
-import * as React from "react";
 import { MapContainer } from "react-leaflet";
 import { CRS } from "leaflet";
 import { MapInner } from "../MapInner/MapInner";
@@ -9,10 +8,11 @@ import { DEFAULT_ZOOM, MAX_ZOOM, MIN_ZOOM } from "../../../constants/Map";
 import { DEBUG } from "../../../config/debugConfig";
 import { DebugMap } from "../../DebugMap/DebugMap";
 import { ImageContext } from "../../../contexts/ImageContext";
+import { useContext } from "react";
 
 export function MapBody() {
-  const { canEditMarkers } = React.useContext(UserContext);
-  const { sizeX, sizeY } = React.useContext(ImageContext);
+  const { canEditMarkers } = useContext(UserContext);
+  const { sizeX, sizeY } = useContext(ImageContext);
 
   return (
     <MapContainer

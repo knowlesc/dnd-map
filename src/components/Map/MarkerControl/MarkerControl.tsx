@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useMap } from "react-leaflet";
 import { MarkerContext } from "../../../contexts/MarkerContext";
 import * as uuid from "uuid";
@@ -7,13 +6,14 @@ import { UserContext } from "../../../contexts/UserContext";
 import { Colors } from "../../../constants/Colors";
 import { Button } from "../../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
 
 export function MarkerControl() {
   const map = useMap();
-  const { addMarker } = React.useContext(MarkerContext);
+  const { addMarker } = useContext(MarkerContext);
   const {
     user: { name },
-  } = React.useContext(UserContext);
+  } = useContext(UserContext);
 
   return (
     <div className="leaflet-bottom leaflet-right">

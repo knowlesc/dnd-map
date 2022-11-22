@@ -1,10 +1,10 @@
-import * as React from "react";
 import { SignInContext } from "../../contexts/SignInContext";
 import { Button } from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
 
 export function LoginButtons() {
-  const { signIn, signOut, googleAccount } = React.useContext(SignInContext);
+  const { signIn, signOut, googleAccount } = useContext(SignInContext);
 
   return (
     <div className="login-buttons">

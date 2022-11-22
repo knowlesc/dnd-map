@@ -1,4 +1,3 @@
-import * as React from "react";
 import { LoginButtons } from "../LoginButtons/LoginButtons";
 import { AppLogo } from "../AppLogo/AppLogo";
 

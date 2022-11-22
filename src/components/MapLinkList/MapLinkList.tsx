@@ -1,4 +1,3 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { mapConfig } from "../../config/mapConfig";
@@ -7,7 +6,7 @@ type Props = {
   onClick?: () => void;
 };
 
-export const MapLinkList: React.FC<Props> = ({ onClick }) => {
+export function MapLinkList({ onClick }: Props) {
   return (
     <div className="grid grid-cols-[auto_max-content_auto] text-4xl font-semibold">
       <div></div>
@@ -27,4 +26,4 @@ export const MapLinkList: React.FC<Props> = ({ onClick }) => {
       <div></div>
     </div>
   );
-};
+}

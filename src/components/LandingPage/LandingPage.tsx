@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { SignInContext } from "../../contexts/SignInContext";
 import { AppHeader } from "../AppHeader/AppHeader";
 import { NotLoggedIn } from "../NotLoggedIn/NotLoggedIn";

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { AppContext } from "./AppContext/AppContext";
 import { Route, Routes } from "react-router";
 import { mapConfig } from "../config/mapConfig";
