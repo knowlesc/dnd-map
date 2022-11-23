@@ -1,7 +1,5 @@
 import "./MapIcon.scss";
-import { IconName } from "@fortawesome/fontawesome-common-types";
-import { CSSProperties, MouseEventHandler } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MouseEventHandler } from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export const Icons: string[] = [

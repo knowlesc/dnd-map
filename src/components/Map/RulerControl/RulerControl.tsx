@@ -15,8 +15,8 @@ export function RulerControl() {
             rulerMode ? stopRuler() : startRuler();
           }}
         >
-          <FontAwesomeIcon icon="ruler" style={{ marginRight: "10px" }} />
-          Ruler
+          <FontAwesomeIcon icon="ruler-combined" className="mr-2" />
+          Distance
         </Button>
       </div>
     </div>

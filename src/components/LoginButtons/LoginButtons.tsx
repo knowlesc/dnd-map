@@ -10,13 +10,13 @@ export function LoginButtons() {
     <div className="login-buttons">
       {!googleAccount && (
         <Button onClick={signIn}>
-          <FontAwesomeIcon icon="user" style={{ marginRight: "10px" }} />
+          <FontAwesomeIcon icon="user" className="mr-2" />
           Sign In with Google
         </Button>
       )}
       {googleAccount && (
         <Button onClick={signOut}>
-          <FontAwesomeIcon icon="user" style={{ marginRight: "10px" }} />
+          <FontAwesomeIcon icon="user" className="mr-2" />
           Sign Out
         </Button>
       )}

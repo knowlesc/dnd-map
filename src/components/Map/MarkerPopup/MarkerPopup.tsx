@@ -46,7 +46,7 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
   }, [setMarker, marker, color, icon, name, dmOnly, radius, notes, circle]);
 
   return (
-    <Popup className="marker-popup" minWidth={150}>
+    <Popup className="marker-popup" minWidth={150} closeButton={false}>
       <div className="mt-5 mb-4">
         {!canEditMarkers && (
           <div className="marker-popup-readonly text-sm">
@@ -91,8 +91,8 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
               </div>
             )}
 
-            <div className="flex justify-between pr-2">
-              <div className="font-semibold mt-2 text-sm">
+            <div className="flex justify-between pr-2 mt-4">
+              <div className="font-semibold text-sm">
                 <label>
                   <input
                     type="checkbox"
@@ -103,7 +103,7 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
                 </label>
               </div>
 
-              <div className="font-semibold mt-2 text-sm">
+              <div className="font-semibold text-sm">
                 <label>
                   <input
                     type="checkbox"
@@ -116,26 +116,47 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
             </div>
 
             {circle && (
-              <div className="mt-1 mb-4">
+              <div className="mt-2 mb-4 text-sm">
                 <div>Radius:</div>
                 <div className="marker-popup-coords-input w-full flex">
                   <input
                     className="basis-1/2 w-full"
                     type="number"
+                    step="10"
                     defaultValue={marker.radius}
                     onChange={(e) => updateRadius(e.target.valueAsNumber)}
                   />
-                  <div className="basis-1/2 flex justify-around items-center text-2xl">
+                  <div className="basis-1/2 flex justify-around items-center text-xl">
                     <FontAwesomeIcon
                       className="cursor-pointer"
                       icon="chevron-left"
                       onClick={() => updateColor(-1)}
                     />
-                    <FontAwesomeIcon
-                      color={color}
-                      icon="square"
-                      onClick={() => updateColor(1)}
-                    />
+                    <div
+                      className="relative"
+                      style={{
+                        width: 30,
+                        height: 30,
+                      }}
+                    >
+                      <div
+                        className="absolute top-0 bottom-0 left-0 right-0"
+                        style={{
+                          borderRadius: 15,
+                          borderWidth: 2,
+                          borderStyle: "dashed",
+                          borderColor: color,
+                        }}
+                      />
+                      <div
+                        className="absolute top-0 bottom-0 left-0 right-0"
+                        style={{
+                          background: color,
+                          opacity: 0.5,
+                          borderRadius: 15,
+                        }}
+                      />
+                    </div>
                     <FontAwesomeIcon
                       className="cursor-pointer"
                       icon="chevron-right"
@@ -157,13 +178,13 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
 
             <div className="whitespace-nowrap flex justify-end mt-3">
               <Button className="bg-blue-400 text-white mr-2" onClick={save}>
-                save
+                Save
               </Button>
               <Button
                 className="bg-red-400 text-white"
                 onClick={() => removeMarker(marker)}
               >
-                delete
+                Delete
               </Button>
             </div>
           </>

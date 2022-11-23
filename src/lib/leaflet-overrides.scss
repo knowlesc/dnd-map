@@ -1,4 +1,15 @@
+@import "../variables.scss";
+
 // Border radius around marker popup
 .leaflet-popup-content-wrapper {
   border-radius: 2px !important;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  font-family: $font-family;
 }

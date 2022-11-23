@@ -19,7 +19,7 @@ export function MarkerControl() {
     <div className="leaflet-bottom leaflet-right">
       <div className="leaflet-control">
         <Button
-          className="add-marker mb-5"
+          className="add-marker mb-12"
           onClick={() => {
             const center = map.getCenter();
             const marker: IMarker = {
@@ -38,10 +38,7 @@ export function MarkerControl() {
             addMarker(marker);
           }}
         >
-          <FontAwesomeIcon
-            icon="map-marker-alt"
-            style={{ marginRight: "10px" }}
-          />
+          <FontAwesomeIcon icon="map-marker-alt" className="mr-2" />
           New Marker
         </Button>
       </div>

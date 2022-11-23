@@ -16,6 +16,7 @@ module.exports = {
       },
       fontFamily: {
         fancy: ["Andada Pro", "serif"],
+        condensed: ["Roboto Condensed", "serif"],
       },
       strokeWidth: {
         4: "4px",

@@ -39,14 +39,9 @@ code {
   height: 100%;
 }
 
-.app-header {
-  padding-left: $content-horizontal-padding;
-  padding-right: $content-horizontal-padding;
-}
-
 .app-body {
   position: absolute;
-  top: $header-height;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -59,7 +54,7 @@ code {
 input[type="text"],
 input[type="number"],
 textarea {
-  font-size: 13px;
+  font-size: 14px;
   font-family: $font-family;
   border: 2px solid $color-light;
   border-radius: 2px;
@@ -68,7 +63,7 @@ textarea {
 
 input[type="checkbox"] {
   cursor: pointer;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .leaflet-container {
@@ -88,46 +83,30 @@ input[type="checkbox"] {
   }
 }
 
-@media only screen and (max-width: $breakpoint-1),
-  only screen and (max-height: $breakpoint-1) {
-  .app-header {
-    padding-left: $content-horizontal-padding / 2;
-    padding-right: $content-horizontal-padding / 2;
-  }
-
-  .app-logo {
-    font-size: $logo-font-size - 10px;
-  }
-}
-
-@media only screen and (max-width: $breakpoint-2),
-  only screen and (max-height: $breakpoint-2) {
-  .app-header {
-    padding-left: $content-horizontal-padding / 4;
-    padding-right: $content-horizontal-padding / 4;
-  }
-}
-
-@media only screen and (max-width: $breakpoint-3),
-  only screen and (max-height: $breakpoint-3) {
-  .app-logo {
-    font-size: $logo-font-size - 20px;
-  }
-}
-
-// TODO: do this without needing !important
-@media only screen and (max-height: $breakpoint-1) {
-  .app-header {
-    height: $header-height - 20px !important;
-    line-height: $header-height - 20px !important;
-  }
-
-  .app-body,
-  .app-logo-dropdown {
-    top: $header-height - 20px !important;
-  }
-}
-
 #root {
   height: 100%;
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  bottom: -60px;
+  left: -20px;
+  right: -20px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  transform: scale(0.1);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.25s;
+}
+
+button:hover::after {
+  transform: scale(1);
+  opacity: 1;
 }

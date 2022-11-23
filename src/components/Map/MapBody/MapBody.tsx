@@ -33,6 +33,7 @@ export function MapBody() {
         [sizeY, sizeX],
       ]}
       maxBoundsViscosity={1}
+      zoomControl={false}
     >
       <MapInner />
       {canEditMarkers && <SaveIndicator />}
