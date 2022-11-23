@@ -75,7 +75,7 @@ export const MapMarker = ({ marker }: Props) => {
     >
       {marker.circle && (
         <Circle
-          className="map-marker-circle transition-all"
+          className="map-marker-circle"
           ref={circleRef}
           key={marker.id}
           center={[marker.lat, marker.lng]}

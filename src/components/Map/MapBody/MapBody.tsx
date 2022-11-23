@@ -33,7 +33,6 @@ export function MapBody() {
         [sizeY, sizeX],
       ]}
       maxBoundsViscosity={1}
-      whenCreated={(map) => map.setZoom(DEFAULT_ZOOM)}
     >
       <MapInner />
       {canEditMarkers && <SaveIndicator />}
