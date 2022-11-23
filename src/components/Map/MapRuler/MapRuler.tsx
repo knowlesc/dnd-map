@@ -1,15 +1,10 @@
 import { useContext, useState } from "react";
-import {
-  Polyline,
-  useMap,
-  useMapEvent,
-  CircleMarker,
-  Tooltip,
-} from "react-leaflet";
+import { useMap, useMapEvent } from "react-leaflet";
 import { LatLng, Map } from "leaflet";
 import { RulerContext } from "../../../contexts/RulerContext";
 import { MapContext } from "../../../contexts/MapContext";
 import { RulerControl } from "../RulerControl/RulerControl";
+import { RulerLines } from "./RulerLines";
 
 function calculateDistance(
   map: Map,
@@ -65,37 +60,7 @@ export function MapRuler() {
   return (
     <>
       <RulerControl />
-
-      <Polyline
-        className="stroke-white"
-        positions={positions}
-        dashArray={[8, 4]}
-        weight={6}
-        lineCap="square"
-      />
-      <Polyline
-        className="stroke-neutral-800"
-        positions={positions}
-        dashArray={[8, 4]}
-        weight={4}
-        lineCap="butt"
-      />
-
-      {positions.map((point, i) => (
-        <CircleMarker
-          className="stroke-neutral-800 fill-white"
-          key={i}
-          center={point}
-          radius={3}
-          fill={true}
-        >
-          {i === positions.length - 1 && (
-            <Tooltip permanent={true}>
-              {distance} {distanceUnits}
-            </Tooltip>
-          )}
-        </CircleMarker>
-      ))}
+      <RulerLines {...{ positions, distance, distanceUnits }} />
     </>
   );
 }
