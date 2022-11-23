@@ -42,7 +42,7 @@ export function MapRuler() {
     }
   });
 
-  useMapEvent("click", (e) => {
+  useMapEvent("preclick", (e) => {
     if (rulerMode) {
       addPoint(e.latlng);
       setShowMouse(true);
