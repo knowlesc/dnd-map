@@ -54,11 +54,7 @@ export const MapMarker = ({ marker }: Props) => {
         className: "font-fancy group",
         html: renderToString(
           <>
-            <MapIcon
-              icon={marker.icon}
-              style={{ color: marker.color, fontSize: iconSize }}
-              className="drop-shadow-icon-big"
-            />
+            <MapIcon icon={marker.icon} className="drop-shadow-icon-big" />
             <span
               className="group-hover:text-sm inline-block drop-shadow-icon-big text-xs text-center font-bold transition-all"
               // TODO not sure if there's a more "natural" way to do this

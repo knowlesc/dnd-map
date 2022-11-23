@@ -128,13 +128,17 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
                   <div className="basis-1/2 flex justify-around items-center text-2xl">
                     <FontAwesomeIcon
                       className="cursor-pointer"
-                      icon="caret-left"
+                      icon="chevron-left"
                       onClick={() => updateColor(-1)}
                     />
-                    <MapIcon icon="square" color={color} />
+                    <FontAwesomeIcon
+                      color={color}
+                      icon="square"
+                      onClick={() => updateColor(1)}
+                    />
                     <FontAwesomeIcon
                       className="cursor-pointer"
-                      icon="caret-right"
+                      icon="chevron-right"
                       onClick={() => updateColor(1)}
                     />
                   </div>
@@ -152,10 +156,13 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
             </div>
 
             <div className="whitespace-nowrap flex justify-end mt-3">
-              <Button className="action sm mr-2" onClick={save}>
+              <Button className="bg-blue-400 text-white mr-2" onClick={save}>
                 save
               </Button>
-              <Button className="warn sm" onClick={() => removeMarker(marker)}>
+              <Button
+                className="bg-red-400 text-white"
+                onClick={() => removeMarker(marker)}
+              >
                 delete
               </Button>
             </div>

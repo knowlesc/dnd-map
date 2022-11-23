@@ -35,36 +35,18 @@ export const iconSize = 30;
 
 type Props = {
   icon: string | IconProp;
-  sizePx?: number;
   className?: string;
-  style?: CSSProperties;
   onClick?: MouseEventHandler | undefined;
-  color?: string;
 };
 
-export function MapIcon({ icon, style, className, onClick, color }: Props) {
-  if ((icon as string).startsWith("icon-")) {
-    const iconName = (icon as string).slice(5, (icon as string).length);
-    return (
-      <svg
-        className={`map-icon map-icon-${iconName} ${className}`}
-        width={iconSize}
-        height={iconSize}
-        onClick={onClick}
-      />
-    );
-  }
-
-  // TODO remove this once icons are migrated
+export function MapIcon({ icon, className, onClick }: Props) {
+  const iconName = (icon as string).slice(5, (icon as string).length);
   return (
-    <>
-      <FontAwesomeIcon
-        icon={icon as unknown as IconName}
-        style={style}
-        className={className}
-        onClick={onClick}
-        color={color}
-      />
-    </>
+    <svg
+      className={`map-icon map-icon-${iconName} ${className}`}
+      width={iconSize}
+      height={iconSize}
+      onClick={onClick}
+    />
   );
 }
