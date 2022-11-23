@@ -4,12 +4,8 @@ import { renderToString } from "react-dom/server";
 import { IPosition } from "../../../types/IPosition";
 import { useRef } from "react";
 
-export const MapCursor: React.FC<{
-  p: IPosition;
-}> = ({ p }) => {
+export function MapCursor({ p }: { p: IPosition }) {
   const markerRef = useRef<any>(null);
-  console.log(p.role);
-
   return (
     <Marker
       ref={markerRef}
@@ -36,4 +32,4 @@ export const MapCursor: React.FC<{
       })}
     ></Marker>
   );
-};
+}

@@ -32,12 +32,12 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
   const [circle, setCircle] = useState(marker.circle ?? false);
 
   const updateRadius = useCallback(
-    (value) => setRadius(Math.min(Math.max(value, 50), 1000)),
+    (value: number) => setRadius(Math.min(Math.max(value, 50), 1000)),
     [setRadius]
   );
 
   const updateColor = useCallback(
-    (add) => setColor(move(Colors, color, add)),
+    (add: number) => setColor(move(Colors, color, add)),
     [color]
   );
 

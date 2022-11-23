@@ -20,7 +20,7 @@ export function MarkerProvider({ children }: React.PropsWithChildren<{}>) {
     useContext(SaveContext);
 
   const addMarker = useCallback(
-    (marker) => {
+    (marker: IMarker) => {
       if (!savedMarkers) return;
       createMarker(marker);
     },
@@ -28,7 +28,7 @@ export function MarkerProvider({ children }: React.PropsWithChildren<{}>) {
   );
 
   const removeMarker = useCallback(
-    (marker) => {
+    (marker: IMarker) => {
       if (!savedMarkers) return;
       deleteMarker(marker);
     },

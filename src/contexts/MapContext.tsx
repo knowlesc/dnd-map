@@ -5,10 +5,10 @@ type MapContextValue = Omit<MapConfig, "imageUrl">;
 
 export const MapContext = createContext<MapContextValue>({} as MapContextValue);
 
-export const MapProvider: React.FC<{ mapName: string }> = ({
+export function MapProvider({
   children,
   mapName,
-}) => {
+}: React.PropsWithChildren<{ mapName: string }>) {
   const config = mapConfig.find((m) => mapName === m.mapName);
   if (!config) return null;
 
@@ -26,4 +26,4 @@ export const MapProvider: React.FC<{ mapName: string }> = ({
       {children}
     </MapContext.Provider>
   );
-};
+}

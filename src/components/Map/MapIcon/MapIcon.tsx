@@ -42,13 +42,7 @@ type Props = {
   color?: string;
 };
 
-export const MapIcon: React.FC<Props> = ({
-  icon,
-  style,
-  className,
-  onClick,
-  color,
-}: Props) => {
+export function MapIcon({ icon, style, className, onClick, color }: Props) {
   if ((icon as string).startsWith("icon-")) {
     const iconName = (icon as string).slice(5, (icon as string).length);
     return (
@@ -73,4 +67,4 @@ export const MapIcon: React.FC<Props> = ({
       />
     </>
   );
-};
+}
