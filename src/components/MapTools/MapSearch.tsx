@@ -33,7 +33,7 @@ export function MapSearch({ onMarkerFocused }: Props) {
   );
 
   return (
-    <div className="flex flex-col gap-3 text-sm w-full h-2/3 px-4">
+    <div className="flex flex-col gap-3 text-sm w-96 h-2/3 px-4">
       <input
         type="text"
         placeholder="Type to search markers"
