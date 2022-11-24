@@ -4,7 +4,7 @@ import { MapInner } from "../MapInner/MapInner";
 import { MarkerControl } from "../MarkerControl/MarkerControl";
 import { SaveIndicator } from "../SaveIndicator/SaveIndicator";
 import { UserContext } from "../../../contexts/UserContext";
-import { DEFAULT_ZOOM, MAX_ZOOM, MIN_ZOOM } from "../../../constants/Map";
+import { MAX_ZOOM, MIN_ZOOM } from "../../../constants/Map";
 import { DEBUG } from "../../../config/debugConfig";
 import { DebugMap } from "../../DebugMap/DebugMap";
 import { ImageContext } from "../../../contexts/ImageContext";
@@ -17,7 +17,6 @@ export function MapBody() {
   return (
     <MapContainer
       className="bg-table-wood bg-cover"
-      wheelPxPerZoomLevel={150}
       bounds={[
         [0, 0],
         [sizeY, sizeX],
@@ -25,7 +24,7 @@ export function MapBody() {
       crs={CRS.Simple}
       minZoom={MIN_ZOOM}
       maxZoom={MAX_ZOOM}
-      zoomSnap={0.5}
+      zoomSnap={0}
       zoomDelta={0.5}
       boundsOptions={{ padding: [600, 600] }}
       maxBounds={[

@@ -81,9 +81,10 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
                         icon === selectableIcon ? "drop-shadow-highlight" : ""
                       }`}
                       icon={selectableIcon}
-                      onClick={() => {
+                      onClick={(e) => {
                         setIcon(selectableIcon);
                         setIconSelecting(false);
+                        e.stopPropagation(); // Otherwise the popup closes
                       }}
                     />
                   </div>
@@ -92,7 +93,7 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
             )}
 
             <div className="flex justify-between pr-2 mt-4">
-              <div className="font-semibold text-sm">
+              <div className="font-condensed text-sm">
                 <label>
                   <input
                     type="checkbox"
@@ -103,7 +104,7 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
                 </label>
               </div>
 
-              <div className="font-semibold text-sm">
+              <div className="font-condensed text-sm">
                 <label>
                   <input
                     type="checkbox"
@@ -177,11 +178,14 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
             </div>
 
             <div className="whitespace-nowrap flex justify-end mt-3">
-              <Button className="bg-blue-400 text-white mr-2" onClick={save}>
+              <Button
+                className="border-l-blue-600 border-l-2 mr-2 bg-slate-200"
+                onClick={save}
+              >
                 Save
               </Button>
               <Button
-                className="bg-red-400 text-white"
+                className="border-l-red-400 border-l-2 bg-slate-200"
                 onClick={() => removeMarker(marker)}
               >
                 Delete

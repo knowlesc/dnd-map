@@ -16,10 +16,10 @@ export function MarkerControl() {
   } = useContext(UserContext);
 
   return (
-    <div className="leaflet-bottom leaflet-right">
+    <div className="leaflet-top leaflet-right">
       <div className="leaflet-control">
         <Button
-          className="add-marker mb-12"
+          className="add-marker mt-11"
           onClick={() => {
             const center = map.getCenter();
             const marker: IMarker = {

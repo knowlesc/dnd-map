@@ -10,12 +10,15 @@ export function RulerControl() {
     <div className="leaflet-top leaflet-right">
       <div className="leaflet-control">
         <Button
-          className={`${rulerMode ? "action" : ""}`}
+          className={`${rulerMode ? "bg-blue-600 text-white" : ""}`}
           onClick={() => {
             rulerMode ? stopRuler() : startRuler();
           }}
         >
-          <FontAwesomeIcon icon="ruler-combined" className="mr-2" />
+          <FontAwesomeIcon
+            icon={rulerMode ? "times" : "ruler-combined"}
+            className="mr-2"
+          />
           Distance
         </Button>
       </div>

@@ -52,13 +52,18 @@ code {
 }
 
 input[type="text"],
+input[type="number"] {
+  height: 32px;
+}
+
+input[type="text"],
 input[type="number"],
 textarea {
   font-size: 14px;
   font-family: $font-family;
-  border: 2px solid $color-light;
+  background: rgb(226, 232, 240);
   border-radius: 2px;
-  padding: 5px;
+  padding: 0.5rem;
 }
 
 input[type="checkbox"] {

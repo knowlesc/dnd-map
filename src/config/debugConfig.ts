@@ -1,1 +1,1 @@
-export const DEBUG = process.env.NODE_ENV !== "production" && false;
+export const DEBUG = process.env.NODE_ENV !== "production";
