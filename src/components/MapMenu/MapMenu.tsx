@@ -3,11 +3,13 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { mapConfig } from "../../config/mapConfig";
 import { MapContext } from "../../contexts/MapContext";
+import { SignInContext } from "../../contexts/SignInContext";
 import { Button } from "../Button/Button";
 
 export function MapMenu() {
   const [showMenu, setShowMenu] = useState(false);
   const { displayName } = useContext(MapContext);
+  const { signIn, signOut, googleAccount } = useContext(SignInContext);
 
   return (
     <>
@@ -45,6 +47,20 @@ export function MapMenu() {
                   </Button>
                 </Link>
               ))}
+              <div className="login-buttons">
+                {!googleAccount && (
+                  <Button onClick={signIn}>
+                    <FontAwesomeIcon icon="user" className="mr-2" />
+                    Sign In with Google
+                  </Button>
+                )}
+                {googleAccount && (
+                  <Button onClick={signOut}>
+                    <FontAwesomeIcon icon="user" className="mr-2" />
+                    Sign Out
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         </div>
