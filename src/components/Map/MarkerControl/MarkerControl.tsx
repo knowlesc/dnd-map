@@ -19,7 +19,7 @@ export function MarkerControl() {
     <div className="leaflet-top leaflet-right">
       <div className="leaflet-control">
         <Button
-          className="add-marker mt-11"
+          className="add-marker mt-11 lg:mt-12"
           onClick={() => {
             const center = map.getCenter();
             const marker: IMarker = {
