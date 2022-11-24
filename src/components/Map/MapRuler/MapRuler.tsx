@@ -56,5 +56,10 @@ export function MapRuler() {
   const positions = rulerPoints.concat(showMouse ? [mousePosition] : []);
   const distance = calculateDistance(map, positions, scaleFactor);
 
-  return <RulerLines {...{ positions, distance, distanceUnits }} />;
+  return (
+    <>
+      <RulerControl />
+      <RulerLines {...{ positions, distance, distanceUnits }} />
+    </>
+  );
 }
