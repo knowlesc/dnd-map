@@ -4,6 +4,7 @@ import { LatLng, Map } from "leaflet";
 import { RulerContext } from "../../../contexts/RulerContext";
 import { MapContext } from "../../../contexts/MapContext";
 import { RulerLines } from "./RulerLines";
+import { RulerControl } from "../RulerControl/RulerControl";
 
 function calculateDistance(
   map: Map,
@@ -49,8 +50,8 @@ export function MapRuler() {
     }
   });
 
-  if (!scaleFactor || !distanceUnits || !rulerMode || !mousePosition)
-    return null;
+  if (!scaleFactor || !distanceUnits) return null;
+  if (!rulerMode || !mousePosition) return <RulerControl />;
 
   const positions = rulerPoints.concat(showMouse ? [mousePosition] : []);
   const distance = calculateDistance(map, positions, scaleFactor);

@@ -10,7 +10,6 @@ import { ConditionalIconText } from "../ConditionalIconText/ConditionalIconText"
 import { DebugMap } from "../DebugMap/DebugMap";
 import { MapRuler } from "../Map/MapRuler/MapRuler";
 import { MarkerControl } from "../Map/MarkerControl/MarkerControl";
-import { RulerControl } from "../Map/RulerControl/RulerControl";
 import { SaveIndicator } from "../Map/SaveIndicator/SaveIndicator";
 import { MapNavigation } from "./MapNavigation";
 import { MapOverlay } from "./MapOverlay";
@@ -36,7 +35,6 @@ export function MapTools() {
 
         <RulerProvider>
           <MapRuler />
-          <RulerControl />
         </RulerProvider>
 
         <Button onClick={() => setShowSearch(true)}>
