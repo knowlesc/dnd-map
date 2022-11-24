@@ -15,6 +15,8 @@ export const Icons: string[] = [
   "icon-marker-red",
   "icon-religion",
   "icon-shop",
+  "icon-magic-shop",
+  "icon-book-shop",
   "icon-camp",
   "icon-smith",
   "icon-flag",
@@ -34,15 +36,16 @@ type Props = {
   icon: string;
   className?: string;
   onClick?: MouseEventHandler | undefined;
+  size?: number;
 };
 
-export function MapIcon({ icon, className, onClick }: Props) {
+export function MapIcon({ icon, className, onClick, size }: Props) {
   const iconName = (icon as string).slice(5, (icon as string).length);
   return (
     <svg
       className={`map-icon map-icon-${iconName} ${className}`}
-      width={iconSize}
-      height={iconSize}
+      width={size ?? iconSize}
+      height={size ?? iconSize}
       onClick={onClick}
     />
   );

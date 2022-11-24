@@ -72,21 +72,21 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
             </div>
 
             {iconSelecting && (
-              <div className="grid grid-cols-5 mt-2">
+              <div className="grid grid-cols-6 mt-2">
                 {Icons.map((selectableIcon) => (
-                  <div key={selectableIcon} className="text-center">
-                    <MapIcon
-                      className={`inline-block cursor-pointer ${
-                        icon === selectableIcon ? "drop-shadow-highlight" : ""
-                      }`}
-                      icon={selectableIcon}
-                      onClick={(e) => {
-                        setIcon(selectableIcon);
-                        setIconSelecting(false);
-                        e.stopPropagation(); // Otherwise the popup closes
-                      }}
-                    />
-                  </div>
+                  <Button
+                    key={selectableIcon}
+                    className={`px-0 py-0 h-9 w-full flex items-center justify-center ${
+                      icon === selectableIcon ? "bg-blue-300" : ""
+                    }`}
+                    onClick={(e) => {
+                      setIcon(selectableIcon);
+                      setIconSelecting(false);
+                      e.stopPropagation(); // Otherwise the popup closes
+                    }}
+                  >
+                    <MapIcon size={24} className={""} icon={selectableIcon} />
+                  </Button>
                 ))}
               </div>
             )}
