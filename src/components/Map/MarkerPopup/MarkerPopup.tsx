@@ -1,6 +1,5 @@
 import { Popup } from "react-leaflet";
 import { MarkerContext } from "../../../contexts/MarkerContext";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { Colors } from "../../../constants/Colors";
@@ -61,7 +60,7 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
               <div className="cursor-pointer mr-2">
                 <MapIcon
                   onClick={() => setIconSelecting((s) => !s)}
-                  icon={icon as IconProp}
+                  icon={icon}
                 />
               </div>
               <input

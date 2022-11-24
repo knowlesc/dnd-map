@@ -1,17 +1,12 @@
 import { MapContainer } from "react-leaflet";
 import { CRS } from "leaflet";
 import { MapInner } from "../MapInner/MapInner";
-import { MarkerControl } from "../MarkerControl/MarkerControl";
-import { SaveIndicator } from "../SaveIndicator/SaveIndicator";
-import { UserContext } from "../../../contexts/UserContext";
 import { MAX_ZOOM, MIN_ZOOM } from "../../../constants/Map";
-import { DEBUG } from "../../../config/debugConfig";
-import { DebugMap } from "../../DebugMap/DebugMap";
 import { ImageContext } from "../../../contexts/ImageContext";
 import { useContext } from "react";
+import { MapTools } from "../../MapTools/MapTools";
 
 export function MapBody() {
-  const { canEditMarkers } = useContext(UserContext);
   const { sizeX, sizeY } = useContext(ImageContext);
 
   return (
@@ -35,9 +30,7 @@ export function MapBody() {
       zoomControl={false}
     >
       <MapInner />
-      {canEditMarkers && <SaveIndicator />}
-      {canEditMarkers && <MarkerControl />}
-      {DEBUG && <DebugMap />}
+      <MapTools />
     </MapContainer>
   );
 }

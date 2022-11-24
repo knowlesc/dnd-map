@@ -5,8 +5,8 @@ import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { Colors } from "../../../constants/Colors";
 import { Button } from "../../Button/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
+import { ConditionalIconText } from "../../ConditionalIconText/ConditionalIconText";
 
 export function MarkerControl() {
   const map = useMap();
@@ -16,32 +16,27 @@ export function MarkerControl() {
   } = useContext(UserContext);
 
   return (
-    <div className="leaflet-top leaflet-right mt-11 lg:mt-12">
-      <div className="leaflet-control">
-        <Button
-          className="add-marker"
-          onClick={() => {
-            const center = map.getCenter();
-            const marker: IMarker = {
-              creator: name,
-              id: uuid.v4(),
-              lat: center.lat,
-              lng: center.lng,
-              name: "New Marker",
-              color: Colors[0],
-              icon: "icon-marker",
-              dmOnly: true,
-              radius: 0,
-              notes: "",
-              circle: false,
-            };
-            addMarker(marker);
-          }}
-        >
-          <FontAwesomeIcon icon="map-marker-alt" className="mr-2" />
-          New Marker
-        </Button>
-      </div>
-    </div>
+    <Button
+      className="add-marker"
+      onClick={() => {
+        const center = map.getCenter();
+        const marker: IMarker = {
+          creator: name,
+          id: uuid.v4(),
+          lat: center.lat,
+          lng: center.lng,
+          name: "New Marker",
+          color: Colors[0],
+          icon: "icon-marker",
+          dmOnly: true,
+          radius: 0,
+          notes: "",
+          circle: false,
+        };
+        addMarker(marker);
+      }}
+    >
+      <ConditionalIconText icon="map-marker-alt" text="New Marker" />
+    </Button>
   );
 }

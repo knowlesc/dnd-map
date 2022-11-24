@@ -1,6 +1,5 @@
 import "./MapIcon.scss";
 import { MouseEventHandler } from "react";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export const Icons: string[] = [
   "icon-castle",
@@ -32,7 +31,7 @@ export const Icons: string[] = [
 export const iconSize = 30;
 
 type Props = {
-  icon: string | IconProp;
+  icon: string;
   className?: string;
   onClick?: MouseEventHandler | undefined;
 };

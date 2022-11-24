@@ -3,7 +3,6 @@ import { useMap, useMapEvent } from "react-leaflet";
 import { LatLng, Map } from "leaflet";
 import { RulerContext } from "../../../contexts/RulerContext";
 import { MapContext } from "../../../contexts/MapContext";
-import { RulerControl } from "../RulerControl/RulerControl";
 import { RulerLines } from "./RulerLines";
 
 function calculateDistance(
@@ -50,17 +49,11 @@ export function MapRuler() {
     }
   });
 
-  if (!scaleFactor || !distanceUnits) return null;
-
-  if (!rulerMode || !mousePosition) return <RulerControl />;
+  if (!scaleFactor || !distanceUnits || !rulerMode || !mousePosition)
+    return null;
 
   const positions = rulerPoints.concat(showMouse ? [mousePosition] : []);
   const distance = calculateDistance(map, positions, scaleFactor);
 
-  return (
-    <>
-      <RulerControl />
-      <RulerLines {...{ positions, distance, distanceUnits }} />
-    </>
-  );
+  return <RulerLines {...{ positions, distance, distanceUnits }} />;
 }

@@ -8,7 +8,7 @@ type Props = {
 
 export function MapLinkList({ onClick }: Props) {
   return (
-    <div className="grid grid-cols-[auto_max-content_auto] text-4xl font-semibold">
+    <div className="grid grid-cols-[auto_max-content_auto] text-2xl font-condensed">
       <div></div>
       <div>
         {mapConfig.map(({ mapName, displayName }) => (
