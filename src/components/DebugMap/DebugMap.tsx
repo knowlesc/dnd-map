@@ -39,6 +39,7 @@ export function DebugMap() {
       >
         &times;
       </div>
+      <div>Options: {JSON.stringify(map.options, null, "  ")}</div>
       <div>Bounds: {JSON.stringify(bounds, null, "  ")}</div>
       <div>Zoom: {zoom}</div>
       <div>Bounds Zoom: {map.getBoundsZoom(sizeBounds)}</div>
