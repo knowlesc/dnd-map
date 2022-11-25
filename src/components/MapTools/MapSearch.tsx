@@ -41,13 +41,26 @@ export function MapSearch({ onMarkerFocused }: Props) {
         onChange={(e) => setQuery(e.target.value)}
       />
       <div className="overflow-y-auto">
-        {filteredMarkers.map(({ icon, name, id, lat, lng }) => (
+        {filteredMarkers.map(({ icon, name, id, lat, lng, dmOnly, notes }) => (
           <div
             key={id}
-            className="flex flex-nowrap my-2 py-2 items-center w-full border-b-2"
+            className="flex group flex-nowrap my-2 py-2 items-center w-full border-b-2"
           >
-            <MapIcon className="flex-shrink-0" icon={icon} />
-            <span className="flex-grow-1 flex-shrink-1 ml-4">{name}</span>
+            <MapIcon
+              className="group-hover:translate-y-0.5 transition-transform flex-shrink-0"
+              icon={icon}
+            />
+            <div className="flex-grow-1 flex-shrink-1 ml-4">
+              <span className="font-fancy italic font-semibold text-base">
+                {name}
+                {dmOnly && (
+                  <FontAwesomeIcon icon="lock" className="text-xs ml-1" />
+                )}
+              </span>
+              <div className="text text-slate-600 whitespace-pre-line">
+                {notes}
+              </div>
+            </div>
             <Button
               className="ml-auto flex-grow-1 flex-shrink-0 mr-2"
               onClick={() => onFocusMarker(lat, lng)}
