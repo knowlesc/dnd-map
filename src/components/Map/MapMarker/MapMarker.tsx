@@ -84,9 +84,7 @@ export const MapMarker = ({ marker }: Props) => {
             fillColor: marker.color,
             dashArray: marker.dmOnly ? "10 10 10" : undefined,
           }}
-        >
-          <MarkerPopup marker={marker} />
-        </Circle>
+        ></Circle>
       )}
       <MarkerPopup marker={marker} />
     </Marker>
