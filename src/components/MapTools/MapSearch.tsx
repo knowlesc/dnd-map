@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { useMap } from "react-leaflet";
 import { MarkerContext } from "../../contexts/MarkerContext";
+import { UserContext } from "../../contexts/UserContext";
 import { Button } from "../Button/Button";
 import { MapIcon } from "../Map/MapIcon/MapIcon";
 
@@ -11,6 +12,7 @@ type Props = {
 
 export function MapSearch({ onMarkerFocused }: Props) {
   const { markers } = useContext(MarkerContext);
+  const { canEditMarkers } = useContext(UserContext);
   const [filteredMarkers, setFilteredMarkers] = useState(markers);
   const [query, setQuery] = useState("");
   const map = useMap();
@@ -41,34 +43,41 @@ export function MapSearch({ onMarkerFocused }: Props) {
         onChange={(e) => setQuery(e.target.value)}
       />
       <div className="overflow-y-auto">
-        {filteredMarkers.map(({ icon, name, id, lat, lng, dmOnly, notes }) => (
-          <div
-            key={id}
-            className="flex group flex-nowrap my-2 py-2 items-center w-full border-b-2"
-          >
-            <MapIcon
-              className="group-hover:translate-y-0.5 transition-transform flex-shrink-0"
-              icon={icon}
-            />
-            <div className="flex-grow-1 flex-shrink-1 ml-4">
-              <span className="font-fancy italic font-semibold text-base">
-                {name}
-                {dmOnly && (
-                  <FontAwesomeIcon icon="lock" className="text-xs ml-1" />
-                )}
-              </span>
-              <div className="text text-slate-600 whitespace-pre-line">
-                {notes}
-              </div>
-            </div>
-            <Button
-              className="ml-auto flex-grow-1 flex-shrink-0 mr-2"
-              onClick={() => onFocusMarker(lat, lng)}
+        {filteredMarkers.map(
+          ({ icon, name, id, lat, lng, dmOnly, notes, dmNotes }) => (
+            <div
+              key={id}
+              className="flex group flex-nowrap my-2 py-2 items-center w-full border-b-2"
             >
-              <FontAwesomeIcon icon="compress-arrows-alt" />
-            </Button>
-          </div>
-        ))}
+              <MapIcon
+                className="group-hover:translate-y-0.5 transition-transform flex-shrink-0"
+                icon={icon}
+              />
+              <div className="flex-grow-1 flex-shrink-1 ml-4">
+                <span className="font-fancy italic font-semibold text-base">
+                  {name}
+                  {dmOnly && (
+                    <FontAwesomeIcon icon="lock" className="text-xs ml-1" />
+                  )}
+                </span>
+                <div className="text text-slate-600 whitespace-pre-line">
+                  {notes}
+                </div>
+                {canEditMarkers && (
+                  <div className="text text-slate-600 whitespace-pre-line">
+                    {dmNotes}
+                  </div>
+                )}
+              </div>
+              <Button
+                className="ml-auto flex-grow-1 flex-shrink-0 mr-2"
+                onClick={() => onFocusMarker(lat, lng)}
+              >
+                <FontAwesomeIcon icon="compress-arrows-alt" />
+              </Button>
+            </div>
+          )
+        )}
       </div>
     </div>
   );

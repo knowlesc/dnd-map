@@ -31,6 +31,7 @@ export function MarkerControl() {
           dmOnly: true,
           radius: 0,
           notes: "",
+          dmNotes: "",
           circle: false,
         };
         addMarker(marker);
