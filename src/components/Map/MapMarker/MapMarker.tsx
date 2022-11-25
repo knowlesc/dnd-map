@@ -54,11 +54,14 @@ export const MapMarker = ({ marker }: Props) => {
         className: "font-fancy group",
         html: renderToString(
           <>
-            <MapIcon icon={marker.icon} className="drop-shadow-icon-big" />
+            <MapIcon
+              icon={marker.icon}
+              className="group-hover:translate-y-0.5 transition-transform drop-shadow-icon-big"
+            />
             <span
-              className="group-hover:text-sm inline-block drop-shadow-icon-big text-xs text-center font-bold transition-all"
+              className="inline-block drop-shadow-icon-big italic text-center font-bold transition-all"
               // TODO not sure if there's a more "natural" way to do this
-              style={{ width: "140px", marginLeft: "-55px" }}
+              style={{ width: "140px", marginLeft: "-55px", fontSize: "13px" }}
             >
               {marker.dmOnly && <i className="fas fa-lock mr-1" />}
               {marker.name.length < truncateAfterChars
