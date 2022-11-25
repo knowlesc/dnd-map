@@ -17,11 +17,11 @@ export function MapSearch({ onMarkerFocused }: Props) {
 
   useEffect(() => {
     if (!query) setFilteredMarkers(markers);
-    setFilteredMarkers(
-      markers.filter((m) =>
-        m.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
-      )
+    const filtered = markers.filter((m) =>
+      m.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
     );
+    filtered.sort((a, b) => a.name.localeCompare(b.name));
+    setFilteredMarkers(filtered);
   }, [markers, query]);
 
   const onFocusMarker = useCallback(

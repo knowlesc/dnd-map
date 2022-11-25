@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { mapConfig } from "../../config/mapConfig";
+import { Button } from "../Button/Button";
 
 type Props = {
   onClick?: () => void;
@@ -15,11 +16,13 @@ export function MapLinkList({ onClick }: Props) {
           <Link
             key={mapName}
             to={`/${mapName}`}
-            className="map-link my-7 block px-10 text-neutral-200 no-underline"
+            className="map-link my-7 block px-10 no-underline"
             onClick={onClick}
           >
-            <FontAwesomeIcon icon="map-location-dot" className="mr-3" />{" "}
-            {displayName}
+            <Button>
+              <FontAwesomeIcon icon="map-location-dot" className="mr-3" />{" "}
+              {displayName}
+            </Button>
           </Link>
         ))}
       </div>
