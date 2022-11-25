@@ -5,6 +5,8 @@ import {
   faMap,
   faMapLocationDot,
   faUser,
+  faSignOut,
+  faSignIn,
 } from "@fortawesome/free-solid-svg-icons";
 
 /**
@@ -12,4 +14,12 @@ import {
  * maybe because all the other icons load much later with the
  * map.
  */
-library.add(faAngleDown, faAngleUp, faMap, faUser, faMapLocationDot);
+library.add(
+  faAngleDown,
+  faAngleUp,
+  faMap,
+  faUser,
+  faSignOut,
+  faSignIn,
+  faMapLocationDot
+);

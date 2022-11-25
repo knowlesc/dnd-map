@@ -10,7 +10,7 @@ type Props = {
 };
 
 export function MapNavigation({ onNavigation }: Props) {
-  const { signIn, signOut, googleAccount } = useContext(SignInContext);
+  const { signOut, googleAccount } = useContext(SignInContext);
 
   return (
     <div className="flex flex-col gap-3">
@@ -27,20 +27,13 @@ export function MapNavigation({ onNavigation }: Props) {
           </Button>
         </Link>
       ))}
-      <div className="login-buttons">
-        {!googleAccount && (
-          <Button onClick={signIn}>
-            <FontAwesomeIcon icon="user" className="mr-2" />
-            Sign In with Google
-          </Button>
-        )}
-        {googleAccount && (
-          <Button onClick={signOut}>
-            <FontAwesomeIcon icon="user" className="mr-2" />
-            Sign Out
-          </Button>
-        )}
-      </div>
+
+      {googleAccount && (
+        <Button onClick={signOut}>
+          <FontAwesomeIcon icon="sign-out" className="mr-2" />
+          Sign Out
+        </Button>
+      )}
     </div>
   );
 }

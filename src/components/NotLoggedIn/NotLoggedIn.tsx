@@ -9,7 +9,7 @@ export function NotLoggedIn() {
   return (
     <main className="app-body bg-table-wood bg-cover text-center pt-10 flex justify-center">
       <Button onClick={signIn}>
-        <FontAwesomeIcon icon="user" className="mr-2" />
+        <FontAwesomeIcon icon="sign-in" className="mr-2" />
         Sign In with Google
       </Button>
     </main>
