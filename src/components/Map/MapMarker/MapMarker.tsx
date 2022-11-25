@@ -11,6 +11,7 @@ import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { iconSize, MapIcon } from "../MapIcon/MapIcon";
 import { useContext, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const truncateAfterChars = 45;
 
@@ -63,7 +64,9 @@ export const MapMarker = ({ marker }: Props) => {
               // TODO not sure if there's a more "natural" way to do this
               style={{ width: "140px", marginLeft: "-55px", fontSize: "13px" }}
             >
-              {marker.dmOnly && <i className="fas fa-lock mr-1" />}
+              {marker.dmOnly && (
+                <FontAwesomeIcon icon="mask" className="mr-1" />
+              )}
               {marker.name.length < truncateAfterChars
                 ? marker.name
                 : marker.name.slice(0, truncateAfterChars - 3) + "..."}

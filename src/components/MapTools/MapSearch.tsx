@@ -57,7 +57,7 @@ export function MapSearch({ onMarkerFocused }: Props) {
                 <span className="font-fancy italic font-semibold text-base">
                   {name}
                   {dmOnly && (
-                    <FontAwesomeIcon icon="lock" className="text-xs ml-1" />
+                    <FontAwesomeIcon icon="mask" className="text-xs ml-1" />
                   )}
                 </span>
                 <div className="text text-slate-600 whitespace-pre-line">

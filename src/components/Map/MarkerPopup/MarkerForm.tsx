@@ -193,7 +193,7 @@ export function MarkerForm({ marker, onSaveClick, onDeleteClick }: Props) {
           defaultValue={marker.dmNotes}
           onChange={(e) => setDmNotes(e.target.value)}
         ></textarea>
-        <FontAwesomeIcon icon="lock" className="absolute bottom-1 right-1" />
+        <FontAwesomeIcon icon="mask" className="absolute bottom-1 right-1" />
       </div>
 
       <div className="whitespace-nowrap flex justify-end mt-3">

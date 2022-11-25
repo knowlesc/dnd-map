@@ -20,7 +20,7 @@ export function MarkerInfo({ marker }: { marker: IMarker }) {
         <span className="ml-1 font-fancy italic font-semibold text-base flex-grow">
           {marker.name}
           {marker.dmOnly && (
-            <FontAwesomeIcon icon="lock" className="text-xs ml-1" />
+            <FontAwesomeIcon icon="mask" className="text-xs ml-1" />
           )}
         </span>
       </div>
