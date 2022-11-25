@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
 import { createPortal } from "react-dom";
-import { DEBUG } from "../../config/debugConfig";
 import { MapContext } from "../../contexts/MapContext";
 import { RulerProvider } from "../../contexts/RulerContext";
 import { UserContext } from "../../contexts/UserContext";
@@ -47,7 +46,7 @@ export function MapTools() {
         </Button>
       </div>
 
-      {DEBUG && <DebugMap />}
+      <DebugMap />
 
       {showMenu && (
         <MapOverlay onClose={() => setShowMenu(false)}>
