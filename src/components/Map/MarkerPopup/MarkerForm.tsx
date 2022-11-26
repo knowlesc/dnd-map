@@ -188,12 +188,12 @@ export function MarkerForm({ marker, onSaveClick, onDeleteClick }: Props) {
 
       <div className="whitespace-pre-line mt-3 relative">
         <textarea
-          className="resize-none"
+          className="resize-none pb-4"
           placeholder="Notes (Private)"
           defaultValue={marker.dmNotes}
           onChange={(e) => setDmNotes(e.target.value)}
         ></textarea>
-        <FontAwesomeIcon icon="mask" className="absolute bottom-1 right-1" />
+        <FontAwesomeIcon icon="mask" className="absolute bottom-0.5 left-0.5" />
       </div>
 
       <div className="whitespace-nowrap flex justify-end mt-3">

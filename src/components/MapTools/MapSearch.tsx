@@ -4,6 +4,7 @@ import { useMap } from "react-leaflet";
 import { MarkerContext } from "../../contexts/MarkerContext";
 import { UserContext } from "../../contexts/UserContext";
 import { Button } from "../Button/Button";
+import { Linkify } from "../Linkify/Linkify";
 import { MapIcon } from "../Map/MapIcon/MapIcon";
 
 type Props = {
@@ -61,11 +62,11 @@ export function MapSearch({ onMarkerFocused }: Props) {
                   )}
                 </span>
                 <div className="text text-slate-600 whitespace-pre-line">
-                  {notes}
+                  <Linkify text={notes} />
                 </div>
                 {canEditMarkers && (
                   <div className="text text-slate-600 whitespace-pre-line">
-                    {dmNotes}
+                    <Linkify text={dmNotes} />
                   </div>
                 )}
               </div>

@@ -3,8 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import { IMarker } from "../../../types/IMarker";
 import { MapIcon } from "../MapIcon/MapIcon";
-import Linkify from "react-linkify";
-import { AbbreviateLink } from "../../AbbreviateLink/AbbreviateLink";
+import { Linkify } from "../../Linkify/Linkify";
 
 export function MarkerInfo({ marker }: { marker: IMarker }) {
   const { canEditMarkers } = useContext(UserContext);
@@ -27,30 +26,17 @@ export function MarkerInfo({ marker }: { marker: IMarker }) {
       <div>
         {marker.notes && (
           <div className="text text-slate-600 whitespace-pre-line mb-2 bg-slate-200 rounded-sm p-2 max-h-32 overflow-y-auto">
-            {marker.notes}
+            <Linkify text={marker.notes} />
           </div>
         )}
         {canEditMarkers && marker.dmNotes && (
           <div className="relative">
             <div className="text text-slate-600 whitespace-pre-line bg-slate-200 rounded-sm p-2 max-h-32 overflow-y-auto pb-4">
-              <Linkify
-                componentDecorator={(decoratedHref, decoratedText, key) => (
-                  <a
-                    target="blank"
-                    rel="noopener noreferrer"
-                    href={decoratedHref}
-                    key={key}
-                  >
-                    <AbbreviateLink text={decoratedText} />
-                  </a>
-                )}
-              >
-                {marker.dmNotes}
-              </Linkify>
+              <Linkify text={marker.dmNotes} />
             </div>
             <FontAwesomeIcon
               icon="mask"
-              className="text-xs absolute right-1 bottom-1"
+              className="text-xs absolute left-0.5 bottom-0.5"
             />
           </div>
         )}

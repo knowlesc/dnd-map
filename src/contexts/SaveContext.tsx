@@ -21,6 +21,10 @@ interface SaveContextValue {
   loadError: string | null;
 }
 
+function getErrorMessage(e: unknown) {
+  return (e as { message: string })?.message ?? "Unknown error";
+}
+
 export const SaveContext = createContext<SaveContextValue>(
   {} as SaveContextValue
 );
@@ -61,8 +65,8 @@ export function SaveProvider({ children }: React.PropsWithChildren<{}>) {
           ...marker,
           id,
         });
-      } catch (e: any) {
-        const message = e?.message ?? "Unknown error";
+      } catch (e) {
+        const message = getErrorMessage(e);
         setSaveError(message);
         console.error(message);
       } finally {
@@ -81,8 +85,8 @@ export function SaveProvider({ children }: React.PropsWithChildren<{}>) {
         await set(ref(getDatabase(), `/markers/${mapName}/${marker.id}`), {
           ...marker,
         });
-      } catch (e: any) {
-        const message = e?.message ?? "Unknown error";
+      } catch (e) {
+        const message = getErrorMessage(e);
         setSaveError(message);
         console.error(message);
       } finally {
@@ -99,8 +103,8 @@ export function SaveProvider({ children }: React.PropsWithChildren<{}>) {
 
       try {
         await remove(ref(getDatabase(), `/markers/${mapName}/${marker.id}`));
-      } catch (e: any) {
-        const message = e?.message ?? "Unknown error";
+      } catch (e) {
+        const message = getErrorMessage(e);
         setSaveError(message);
         console.error(message);
       } finally {
