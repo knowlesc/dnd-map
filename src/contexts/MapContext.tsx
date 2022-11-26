@@ -1,5 +1,6 @@
 import { createContext } from "react";
 import { MapConfig, mapConfig } from "../config/mapConfig";
+import { Helmet } from "react-helmet-async";
 
 type MapContextValue = Omit<MapConfig, "imageUrl">;
 
@@ -23,6 +24,9 @@ export function MapProvider({
         distanceUnits,
       }}
     >
+      <Helmet>
+        <title>{displayName}</title>
+      </Helmet>
       {children}
     </MapContext.Provider>
   );
