@@ -6,11 +6,19 @@ import { useContext, useState } from "react";
 import { MarkerInfo } from "./MarkerInfo";
 import { MarkerForm } from "./MarkerForm";
 import { Button } from "../../Button/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export function MarkerPopup({ marker }: { marker: IMarker }) {
+type Props = {
+  marker: IMarker;
+  startMove: () => void;
+  stopMove: () => void;
+};
+
+export function MarkerPopup({ marker, startMove, stopMove }: Props) {
   const { canEditMarkers } = useContext(UserContext);
   const { removeMarker, setMarker } = useContext(MarkerContext);
   const [editing, setEditing] = useState(false);
+  const [dragging, setDragging] = useState(false);
 
   return (
     <Popup
@@ -29,14 +37,45 @@ export function MarkerPopup({ marker }: { marker: IMarker }) {
             <MarkerInfo marker={marker} />
             {canEditMarkers && (
               <div className="whitespace-nowrap flex justify-end mt-3">
+                {dragging ? (
+                  <Button
+                    className="bg-blue-600 text-white mr-2"
+                    onClick={() => {
+                      setDragging(false);
+                      stopMove();
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon="up-down-left-right"
+                      className="mr-2"
+                    />{" "}
+                    Done
+                  </Button>
+                ) : (
+                  <Button
+                    className="bg-slate-200 mr-2"
+                    onClick={() => {
+                      setDragging(true);
+                      startMove();
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon="up-down-left-right"
+                      className="mr-2"
+                    />{" "}
+                    Move
+                  </Button>
+                )}
+
                 <Button
-                  className="border-l-blue-400 border-l-2 bg-slate-200"
+                  className="bg-slate-200"
                   onClick={(e) => {
                     e.stopPropagation();
                     setEditing(true);
                   }}
                 >
-                  Edit Marker
+                  <FontAwesomeIcon icon="pencil" className="mr-2" /> Edit
+                  Details
                 </Button>
               </div>
             )}

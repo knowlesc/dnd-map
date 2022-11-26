@@ -10,7 +10,7 @@ import { MarkerPopup } from "../MarkerPopup/MarkerPopup";
 import { IMarker } from "../../../types/IMarker";
 import { UserContext } from "../../../contexts/UserContext";
 import { iconSize, MapIcon } from "../MapIcon/MapIcon";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const truncateAfterChars = 45;
@@ -24,6 +24,7 @@ export const MapMarker = ({ marker }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const circleRef = useRef<LeafletCircle<any>>(null);
   const { canEditMarkers } = useContext(UserContext);
+  const [draggable, setDraggable] = useState(false);
 
   return (
     <Marker
@@ -31,7 +32,7 @@ export const MapMarker = ({ marker }: Props) => {
       ref={markerRef}
       key={marker.id}
       position={[marker.lat, marker.lng]}
-      draggable={canEditMarkers}
+      draggable={canEditMarkers && draggable}
       eventHandlers={{
         // TODO better way to do this?
         mouseover: () => {
@@ -46,6 +47,7 @@ export const MapMarker = ({ marker }: Props) => {
           if (!markerRef.current) return;
           const { lat, lng } = markerRef.current.getLatLng();
           setMarker({ ...marker, lat, lng });
+          markerRef.current.openPopup();
         },
       }}
       icon={divIcon({
@@ -70,6 +72,9 @@ export const MapMarker = ({ marker }: Props) => {
               {marker.name.length < truncateAfterChars
                 ? marker.name
                 : marker.name.slice(0, truncateAfterChars - 3) + "..."}
+              {draggable && (
+                <FontAwesomeIcon icon="up-down-left-right" className="ml-1" />
+              )}
             </span>
           </>
         ),
@@ -89,7 +94,11 @@ export const MapMarker = ({ marker }: Props) => {
           }}
         ></Circle>
       )}
-      <MarkerPopup marker={marker} />
+      <MarkerPopup
+        marker={marker}
+        startMove={() => setDraggable(true)}
+        stopMove={() => setDraggable(false)}
+      />
     </Marker>
   );
 };

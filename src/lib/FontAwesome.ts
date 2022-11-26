@@ -7,6 +7,9 @@ import {
   faUser,
   faSignOut,
   faSignIn,
+  faMask,
+  faUpDownLeftRight,
+  faPencil,
 } from "@fortawesome/free-solid-svg-icons";
 
 /**
@@ -21,5 +24,8 @@ library.add(
   faUser,
   faSignOut,
   faSignIn,
-  faMapLocationDot
+  faMapLocationDot,
+  faMask,
+  faUpDownLeftRight,
+  faPencil
 );
