@@ -3,6 +3,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { useMap } from "react-leaflet";
 import { MarkerContext } from "../../contexts/MarkerContext";
 import { UserContext } from "../../contexts/UserContext";
+import { MapIconType } from "../../lib/icons/icons";
 import { Button } from "../Button/Button";
 import { Linkify } from "../Linkify/Linkify";
 import { MapIcon } from "../Map/MapIcon/MapIcon";
@@ -52,7 +53,7 @@ export function MapSearch({ onMarkerFocused }: Props) {
             >
               <MapIcon
                 className="group-hover:translate-y-0.5 transition-transform flex-shrink-0"
-                icon={icon}
+                icon={icon as MapIconType}
               />
               <div className="flex-grow-1 flex-shrink-1 ml-4">
                 <span className="font-fancy italic font-semibold text-base">

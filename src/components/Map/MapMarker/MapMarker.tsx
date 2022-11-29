@@ -12,6 +12,7 @@ import { UserContext } from "../../../contexts/UserContext";
 import { iconSize, MapIcon } from "../MapIcon/MapIcon";
 import { useContext, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MapIconType } from "../../../lib/icons/icons";
 
 const truncateAfterChars = 45;
 
@@ -58,7 +59,7 @@ export const MapMarker = ({ marker }: Props) => {
         html: renderToString(
           <>
             <MapIcon
-              icon={marker.icon}
+              icon={marker.icon as MapIconType}
               className="group-hover:translate-y-0.5 transition-transform drop-shadow-icon-big"
             />
             <span

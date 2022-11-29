@@ -1,9 +1,10 @@
 import { IMarker } from "../../../types/IMarker";
 import { Colors } from "../../../constants/Colors";
 import { Button } from "../../Button/Button";
-import { Icons, MapIcon } from "../MapIcon/MapIcon";
+import { MapIcon } from "../MapIcon/MapIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useCallback } from "react";
+import { MapIcons, MapIconType } from "../../../lib/icons/icons";
 
 function move(array: string[], current: string, amount: number) {
   const index = array.find((a) => a === current) ? array.indexOf(current) : -1;
@@ -71,7 +72,10 @@ export function MarkerForm({ marker, onSaveClick, onDeleteClick }: Props) {
     <>
       <div className="flex items-center">
         <div className="cursor-pointer mr-2">
-          <MapIcon onClick={() => setIconSelecting((s) => !s)} icon={icon} />
+          <MapIcon
+            onClick={() => setIconSelecting((s) => !s)}
+            icon={icon as MapIconType}
+          />
         </div>
         <input
           className="w-full"
@@ -83,7 +87,7 @@ export function MarkerForm({ marker, onSaveClick, onDeleteClick }: Props) {
 
       {iconSelecting && (
         <div className="grid grid-cols-6 mt-2">
-          {Icons.map((selectableIcon) => (
+          {MapIcons.map((selectableIcon) => (
             <Button
               key={selectableIcon}
               className={`px-0 py-0 h-9 w-full flex items-center justify-center ${

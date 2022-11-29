@@ -4,6 +4,7 @@ import { UserContext } from "../../../contexts/UserContext";
 import { IMarker } from "../../../types/IMarker";
 import { MapIcon } from "../MapIcon/MapIcon";
 import { Linkify } from "../../Linkify/Linkify";
+import { MapIconType } from "../../../lib/icons/icons";
 
 export function MarkerInfo({ marker }: { marker: IMarker }) {
   const { canEditMarkers } = useContext(UserContext);
@@ -14,7 +15,7 @@ export function MarkerInfo({ marker }: { marker: IMarker }) {
         <MapIcon
           size={24}
           className="group-hover:translate-y-0.5 transition-transform flex-shrink-0"
-          icon={marker.icon}
+          icon={marker.icon as MapIconType}
         />
         <span className="ml-1 font-fancy italic font-semibold text-base flex-grow">
           {marker.name}

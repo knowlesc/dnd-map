@@ -28,7 +28,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "emulate": "firebase emulators:start --import=./data --export-on-exit",
-    "deploy": "npm run build && firebase deploy"
+    "deploy": "npm run build && firebase deploy",
+    "icons": "node src/lib/icons/encode.mjs"
   },
   "browserslist": {
     "production": [
