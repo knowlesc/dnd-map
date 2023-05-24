@@ -24,6 +24,7 @@ export type MapIconType =
   | "icon-signpost"
   | "icon-skull"
   | "icon-smith"
+  | "icon-spellbook"
   | "icon-trail"
   | "icon-treasure"
   | "icon-tree";
@@ -54,6 +55,7 @@ export const MapIcons: MapIconType[] = [
   "icon-signpost",
   "icon-skull",
   "icon-smith",
+  "icon-spellbook",
   "icon-trail",
   "icon-treasure",
   "icon-tree",
